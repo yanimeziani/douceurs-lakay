@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth bg-[#08090C] text-[#F3EFE6]">
+<html lang="fr" class="scroll-smooth bg-[#FAFAF9] text-[#18181B]">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Douceurs Lakay | Cuisine Haïtienne Authentique & Traiteur à Québec</title>
-  <meta name="description" content="L'art de la vraie cuisine haïtienne à la caille à Québec par Chef Jude. Griot doré croustillant, Lalo traditionnel, Fritay festif et Kremas artisanal maison.">
+  <title>Douceurs Lakay | Chef Jude • Traiteur & Cuisine Haïtienne à Québec</title>
+  <meta name="description" content="La vraie cuisine haïtienne à la caille à Québec par Chef Jude. Griot croustillant, Lalo traditionnel, Fritay festif et Kremas artisanal.">
   
-  <!-- Premium Fonts -->
+  <!-- Typedream Inspired Modern Font Pairing -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,27 +18,25 @@
       theme: {
         extend: {
           colors: {
-            noir: {
-              950: '#050608',
-              900: '#08090C',
-              850: '#0E1015',
-              800: '#14171E',
-              700: '#1E232E'
-            },
-            paper: {
-              dark: '#0B0D12',
-              card: 'rgba(18, 21, 28, 0.75)',
-              border: 'rgba(243, 239, 230, 0.12)',
-              gold: '#E5A93C',
-              ember: '#FF5414',
-              ivory: '#F3EFE6',
-              muted: '#9498A6'
+            brand: {
+              orange: '#FF5414',
+              orangeHover: '#E5450A',
+              orangeLight: '#FFF4EF',
+              dark: '#111215',
+              surface: '#FFFFFF',
+              bg: '#FAFAF9',
+              bgAlt: '#F4F4F2',
+              border: '#E8E8E4',
+              borderLight: '#F0F0EC',
+              muted: '#71717A',
+              body: '#3F3F46',
+              green: '#10B981',
+              greenLight: '#ECFDF5'
             }
           },
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Outfit"', 'sans-serif'],
-            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Outfit"', 'system-ui', 'sans-serif'],
             mono: ['"Space Mono"', 'monospace']
           }
         }
@@ -54,148 +52,101 @@
       background: #FF5414;
       color: #FFFFFF;
     }
-    
-    /* Paper Noise Texture Overlay */
-    .paper-noise {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    .tracking-tightest {
+      letter-spacing: -0.04em;
     }
-
-    /* Paper Fiber Border & Glassmorphic Surface */
-    .paper-card {
-      background: linear-gradient(135deg, rgba(20, 24, 33, 0.82) 0%, rgba(11, 13, 18, 0.92) 100%);
+    .bento-card {
+      background: #FFFFFF;
+      border: 1px solid #E8E8E4;
+      border-radius: 1.75rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
+      border-color: #D4D4CE;
+    }
+    .floating-nav {
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(243, 239, 230, 0.1);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .paper-card:hover {
-      border-color: rgba(229, 169, 60, 0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 84, 20, 0.15);
-    }
-
-    /* Subtle Paper Crease Shadow */
-    .paper-crease {
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.5);
-    }
-
-    /* Floating Island Navbar */
-    .floating-nav {
-      background: rgba(11, 13, 18, 0.82);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(243, 239, 230, 0.12);
-      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Radial Vignette */
-    .hero-vignette {
-      background: radial-gradient(circle at center, rgba(8,9,12,0.2) 0%, rgba(8,9,12,0.85) 75%, rgba(5,6,8,0.98) 100%);
-    }
-
-    .bg-crossfade {
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(232, 232, 228, 0.9);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
     }
   </style>
 </head>
-<body class="bg-noir-900 text-paper-ivory font-sans antialiased overflow-x-hidden paper-noise selection:bg-paper-ember selection:text-white">
+<body class="bg-brand-bg text-brand-dark font-sans antialiased selection:bg-brand-orange selection:text-white">
 
-  <!-- ========================================================================= -->
-  <!-- PROCEDURAL WEBGL / 2D CANVAS PAPER SHADER STAGE (HERO & HEADERS) -->
-  <!-- ========================================================================= -->
-  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-    <!-- Interactive Paper Shader Canvas -->
-    <canvas id="paperShaderCanvas" class="absolute inset-0 w-full h-full opacity-60"></canvas>
-    
-    <!-- Dynamic Food Imagery Backdrop (Crossfading) -->
-    <div id="bgStage" class="absolute inset-0 w-full h-full mix-blend-screen opacity-20">
-      <img id="bgHero" src="./assets/griot.jpg" alt="Background Griot" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.35] contrast-[1.2] scale-105 bg-crossfade">
-      <img id="bgLalo" src="./assets/lalo.jpg" alt="Background Lalo" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.32] contrast-[1.2] scale-105 opacity-0 bg-crossfade">
-      <img id="bgFritay" src="./assets/fritay.webp" alt="Background Fritay" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.32] contrast-[1.2] scale-105 opacity-0 bg-crossfade">
-      <img id="bgDinde" src="./assets/dinde.jpg" alt="Background Dinde" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.32] contrast-[1.2] scale-105 opacity-0 bg-crossfade">
-      <img id="bgKremas" src="./assets/kremas.png" alt="Background Kremas" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.32] contrast-[1.2] scale-105 opacity-0 bg-crossfade">
-    </div>
-
-    <!-- Vignette & Warm Ember Lighting Glow -->
-    <div class="absolute inset-0 hero-vignette"></div>
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-paper-ember/10 rounded-full blur-[140px]"></div>
-  </div>
-
-  <!-- TOP RUNNING TICKER -->
-  <div class="relative z-50 bg-noir-950/80 border-b border-white/5 py-2 px-4 text-xs font-mono text-center backdrop-blur">
-    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 flex-wrap">
-      <span class="inline-flex items-center gap-1.5 font-bold text-paper-gold">
-        <span class="w-2 h-2 rounded-full bg-paper-ember animate-ping"></span>
-        COMMANDES WEEK-END OUVERTES
+  <!-- TOP MINIMALIST TICKER -->
+  <div class="bg-brand-dark text-white py-2 px-4 text-xs font-medium text-center">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+      <span class="inline-flex items-center gap-1.5 font-semibold text-amber-300">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        Commandes Week-end Ouvertes
       </span>
-      <span class="text-white/20 hidden sm:inline">•</span>
-      <span class="text-slate-300">Québec • Lévis • Sainte-Foy • Gatineau</span>
-      <span class="text-white/20 hidden sm:inline">•</span>
-      <a href="tel:4389221961" class="font-bold underline text-white hover:text-paper-gold transition-colors">438-922-1961</a>
+      <span class="text-neutral-500 hidden sm:inline">•</span>
+      <span class="text-neutral-300">Ville de Québec, Lévis, Sainte-Foy & Gatineau</span>
+      <span class="text-neutral-500 hidden sm:inline">•</span>
+      <a href="tel:4389221961" class="font-bold underline hover:text-brand-orange">438-922-1961</a>
     </div>
   </div>
 
-  <!-- FLOATING NAVIGATION ISLAND -->
+  <!-- TYPEDREAM FLOATING ISLAND NAVBAR -->
   <div class="sticky top-4 z-50 max-w-5xl mx-auto px-4 sm:px-6">
-    <header class="floating-nav rounded-full h-16 px-5 sm:px-7 flex items-center justify-between paper-crease">
+    <header class="floating-nav rounded-full h-16 px-5 sm:px-6 flex items-center justify-between">
       
-      <!-- LOGO (ICON-ONLY EMBLEM CIRCLE DETOURED) -->
-      <a href="#" class="flex items-center gap-3.5 group">
-        <div class="relative">
-          <img 
-            src="./assets/logo.png" 
-            alt="Douceurs Lakay" 
-            class="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(229,169,60,0.4)] group-hover:scale-105 transition-transform"
-          >
-          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-paper-ember border-2 border-noir-900"></span>
-        </div>
+      <!-- LOGO -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img 
+          src="./assets/logo.png" 
+          alt="Douceurs Lakay" 
+          class="w-9 h-9 object-contain group-hover:scale-105 transition-transform"
+        >
         <div>
-          <span class="text-lg font-extrabold font-display tracking-tight text-white block leading-none">Douceurs Lakay</span>
-          <span class="text-[9px] font-mono text-paper-gold uppercase tracking-wider block mt-1 font-bold">Chef Jude • 100% Lakay</span>
+          <span class="text-base font-extrabold font-display tracking-tight text-brand-dark block leading-none">Douceurs Lakay</span>
+          <span class="text-[10px] text-brand-orange font-bold uppercase tracking-wider block mt-0.5">Par Chef Jude</span>
         </div>
       </a>
 
-      <!-- DESKTOP NAV -->
-      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-paper-muted">
-        <a href="#menu" class="hover:text-paper-gold transition-colors">Plats à la Caille</a>
-        <a href="#traiteur" class="hover:text-paper-gold transition-colors">Formules Traiteur</a>
-        <a href="#chef" class="hover:text-paper-gold transition-colors">L'Artisan</a>
-        <a href="#avis" class="hover:text-paper-gold transition-colors">Avis</a>
+      <!-- NAV LINKS -->
+      <nav class="hidden md:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-brand-muted">
+        <a href="#menu" class="hover:text-brand-dark transition-colors">Nos Plats</a>
+        <a href="#traiteur" class="hover:text-brand-dark transition-colors">Traiteur</a>
+        <a href="#chef" class="hover:text-brand-dark transition-colors">Chef Jude</a>
+        <a href="#avis" class="hover:text-brand-dark transition-colors">Avis</a>
       </nav>
 
-      <!-- RIGHT ACTIONS -->
+      <!-- CTA BUTTONS -->
       <div class="flex items-center gap-3">
-        <a 
-          href="tel:4389221961" 
-          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-200 hover:border-paper-gold/40 transition-colors"
-        >
-          <i data-lucide="phone" class="w-3.5 h-3.5 text-paper-gold"></i>
-          <span>438-922-1961</span>
-        </a>
         <a 
           href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20pour%20ce%20week-end%20!" 
           target="_blank"
-          class="px-5 py-2.5 rounded-full bg-paper-ember hover:bg-white hover:text-noir-950 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-paper-ember/25 transition-all flex items-center gap-2"
+          class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-greenLight text-brand-green hover:bg-brand-green hover:text-white font-bold text-xs uppercase tracking-wider transition-all"
         >
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
-          <span class="hidden sm:inline">WhatsApp</span>
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>WhatsApp</span>
         </a>
-        <button id="mobileMenuBtn" class="md:hidden p-1 text-white">
+        <a 
+          href="#commande" 
+          class="px-5 py-2 rounded-full bg-brand-dark hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-wider shadow-sm hover:shadow-md transition-all"
+        >
+          Commander
+        </a>
+        <button id="mobileMenuBtn" class="md:hidden p-1.5 text-brand-dark">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
 
     </header>
 
-    <!-- MOBILE MENU -->
-    <div id="mobileMenu" class="hidden md:hidden mt-2 paper-card rounded-3xl p-6 border border-white/10 shadow-2xl space-y-4">
-      <a href="#menu" class="block font-bold text-sm text-white py-1">Nos Plats à la Caille</a>
-      <a href="#traiteur" class="block font-bold text-sm text-white py-1">Formules Traiteur</a>
-      <a href="#chef" class="block font-bold text-sm text-white py-1">L'Artisan Chef Jude</a>
-      <a href="#avis" class="block font-bold text-sm text-white py-1">Témoignages</a>
-      <div class="pt-3 border-t border-white/10 flex flex-col gap-2">
-        <a href="tel:4389221961" class="py-2.5 text-center rounded-xl bg-white/5 text-paper-gold font-mono font-bold text-xs">
+    <!-- MOBILE DROPDOWN -->
+    <div id="mobileMenu" class="hidden md:hidden mt-2 bg-white rounded-3xl p-6 border border-brand-border shadow-xl space-y-3">
+      <a href="#menu" class="block font-bold text-sm text-brand-dark py-1">Nos Plats à la Caille</a>
+      <a href="#traiteur" class="block font-bold text-sm text-brand-dark py-1">Formules Traiteur</a>
+      <a href="#chef" class="block font-bold text-sm text-brand-dark py-1">L'Artisan Chef Jude</a>
+      <a href="#avis" class="block font-bold text-sm text-brand-dark py-1">Avis Clients</a>
+      <div class="pt-3 border-t border-brand-border flex flex-col gap-2">
+        <a href="tel:4389221961" class="py-2.5 text-center rounded-xl bg-brand-bgAlt text-brand-dark font-bold text-xs">
           📞 438-922-1961
         </a>
         <a href="https://wa.me/14389221961" class="py-2.5 text-center rounded-xl bg-[#25D366] text-white font-bold text-xs">
@@ -205,36 +156,35 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- HERO SECTION WITH INTERACTIVE PAPER SHADER BACKDROP -->
-  <!-- ========================================================================= -->
-  <section class="relative z-10 pt-16 pb-24 sm:pt-24 sm:pb-32">
+  <!-- HERO SECTION: TYPEDREAM BENTO STYLE -->
+  <section class="pt-16 pb-20 sm:pt-24 sm:pb-28">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       
-      <!-- HERO TEXT BLOCK -->
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-7">
+      <!-- Center Title Block -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-6">
         
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-noir-950/80 border border-paper-gold/40 backdrop-blur font-mono text-xs text-paper-gold shadow-lg">
-          <span class="w-2 h-2 rounded-full bg-paper-ember animate-ping"></span>
-          <span class="tracking-wider font-bold">100% LAKAY • CUISINE AUTHENTIQUE À LA CAILLE</span>
+        <!-- Tag Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-brand-border shadow-sm text-xs font-bold text-brand-dark">
+          <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
+          <span>100% Fait Maison • Cuisine Haïtienne Authentique</span>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-white leading-[1.05]">
-          La Vraie Cuisine Haïtienne, <br>
-          <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-paper-gold via-amber-200 to-paper-ember">
-            Chaleureuse & Généreuse.
-          </span>
+        <!-- Typedream Massive Heading -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-display tracking-tightest text-brand-dark leading-[1.06]">
+          Le vrai goût de chez nous, <br>
+          <span class="text-brand-orange">chaud & croustillant.</span>
         </h1>
 
-        <p class="text-base sm:text-xl text-slate-300 font-light leading-relaxed max-w-2xl mx-auto">
-          Griot doré croustillant, Lalo traditionnel mijoté aux viandes et crabes, Dinde créole au four, Fritay festif et Kremas onctueux. Cuisiné maison par Chef Jude à Québec.
+        <!-- Subtitle -->
+        <p class="text-base sm:text-lg text-brand-body leading-relaxed max-w-xl mx-auto">
+          Griot de porc mariné aux agrumes, Lalo traditionnel mijoté, Dinde créole au four, Fritay festif et Kremas artisanal. Préparé avec passion par Chef Jude à Québec.
         </p>
 
-        <!-- CTA BUTTONS -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <a 
             href="#commande" 
-            class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-paper-ember to-amber-600 hover:from-paper-gold hover:to-paper-ember text-white font-extrabold text-xs uppercase tracking-wider shadow-2xl shadow-paper-ember/30 hover:scale-105 transition-all flex items-center justify-center gap-2"
+            class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-brand-orange/20 transition-all hover:scale-105 flex items-center justify-center gap-2"
           >
             <span>Commander pour ce Week-end</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -243,84 +193,87 @@
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20pour%20ce%20week-end%20!" 
             target="_blank"
-            class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider border border-white/20 backdrop-blur transition-all flex items-center justify-center gap-2"
+            class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-brand-bgAlt text-brand-dark font-bold text-xs uppercase tracking-wider border border-brand-border shadow-sm transition-all flex items-center justify-center gap-2"
           >
             <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
             <span>WhatsApp Direct</span>
           </a>
         </div>
 
-        <!-- STATS BADGES -->
-        <div class="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
+        <!-- STATS BADGES (WITHOUT MAPAQ) -->
+        <div class="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-brand-muted border-t border-brand-border">
           <div>
-            <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">100%</div>
-            <div class="text-[10px] uppercase text-paper-gold tracking-wider mt-1">Fait Maison</div>
+            <div class="text-2xl sm:text-3xl font-display font-extrabold text-brand-dark">100%</div>
+            <div class="text-[10px] uppercase text-brand-orange font-bold tracking-wider mt-1">Fait Maison</div>
           </div>
           <div>
-            <div class="text-2xl sm:text-3xl font-display font-extrabold text-paper-gold">5.0 ★</div>
-            <div class="text-[10px] uppercase text-slate-400 tracking-wider mt-1">Avis Clients</div>
+            <div class="text-2xl sm:text-3xl font-display font-extrabold text-amber-500">5.0 ★</div>
+            <div class="text-[10px] uppercase text-brand-muted tracking-wider mt-1">Avis Clients</div>
           </div>
           <div>
-            <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">MAPAQ</div>
-            <div class="text-[10px] uppercase text-emerald-400 tracking-wider mt-1">Salubre Certifié</div>
+            <div class="text-2xl sm:text-3xl font-display font-extrabold text-brand-dark">Généreux</div>
+            <div class="text-[10px] uppercase text-emerald-600 font-bold tracking-wider mt-1">Portions Royales</div>
           </div>
           <div>
-            <div class="text-2xl sm:text-3xl font-display font-extrabold text-white">10 à 300+</div>
-            <div class="text-[10px] uppercase text-slate-400 tracking-wider mt-1">Capacité Traiteur</div>
+            <div class="text-2xl sm:text-3xl font-display font-extrabold text-brand-dark">10 à 300+</div>
+            <div class="text-[10px] uppercase text-brand-muted tracking-wider mt-1">Capacité Traiteur</div>
           </div>
         </div>
 
       </div>
 
-      <!-- HERO BENTO TACTILE PAPER GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <!-- TYPEDREAM BENTO HERO SHOWCASE -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
         
-        <!-- Large Main Card: Griot Feature -->
-        <div class="md:col-span-8 paper-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group cursor-pointer" onmouseenter="switchBg('bgHero')">
-          <div class="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
-            <img src="./assets/griot.jpg" alt="Griot de Porc" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <span class="absolute top-4 right-4 bg-paper-ember text-white text-[10px] font-mono font-bold uppercase px-3 py-1 rounded-full shadow">
+        <!-- Large Main Bento: Real Griot -->
+        <div class="md:col-span-8 bento-card p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group">
+          <div class="relative aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden mb-6 bg-brand-bgAlt">
+            <img 
+              src="./assets/griot.jpg" 
+              alt="Griot de Porc Doré" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            >
+            <div class="absolute top-4 right-4 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
               Plat Vedette
-            </span>
+            </div>
           </div>
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h3 class="text-2xl font-bold font-display text-white">Griot de Porc Doré & Pikliz</h3>
-              <p class="text-xs text-slate-300 mt-1">Mariné aux agrumes & piments doux • Servi avec bananes pesées chaudes</p>
+              <h3 class="text-2xl font-bold font-display tracking-tight text-brand-dark">Griot de Porc Doré & Pikliz</h3>
+              <p class="text-xs text-brand-muted mt-1">Mariné aux épices antillaises • Servi avec bananes pesées chaudes</p>
             </div>
             <a 
               href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20le%20Griot%20de%20Porc%20!" 
               target="_blank"
-              class="px-6 py-3 rounded-full bg-paper-ember hover:bg-white hover:text-noir-950 text-white font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2"
+              class="px-5 py-2.5 rounded-full bg-brand-dark hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-wider text-center transition-colors"
             >
-              <span>Commander</span>
-              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              Commander ce plat
             </a>
           </div>
         </div>
 
-        <!-- Right Bento Column: 2 Mini Paper Cards -->
-        <div class="md:col-span-4 flex flex-col gap-6">
+        <!-- Right Bento Column: 2 Mini Cards -->
+        <div class="md:col-span-4 flex flex-col gap-5">
           
           <!-- Mini Card 1: Kremas -->
-          <div class="paper-card rounded-3xl p-6 flex-1 flex flex-col justify-between group cursor-pointer" onmouseenter="switchBg('bgKremas')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-paper-gold bg-paper-gold/10 border border-paper-gold/30 px-3 py-1 rounded-full">
-                Artisanal
+          <div class="bento-card p-6 flex-1 flex flex-col justify-between group">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                Douceur Maison
               </span>
-              <span class="text-xs font-mono font-bold text-slate-400">750ml</span>
+              <span class="text-xs font-mono font-bold text-brand-dark">750ml</span>
             </div>
             <div class="flex items-center gap-4 my-2">
-              <img src="./assets/kremas.png" alt="Kremas" class="w-14 h-14 object-contain rounded-xl bg-black/40 p-1 border border-white/10">
+              <img src="./assets/kremas.png" alt="Kremas" class="w-14 h-14 object-contain rounded-xl bg-brand-bgAlt p-1">
               <div>
-                <h4 class="font-bold font-display text-white text-base">Kremas Maison</h4>
-                <p class="text-xs text-slate-300">Lait de coco, vanille & rhum</p>
+                <h4 class="font-bold font-display text-brand-dark text-base">Kremas Artisanal</h4>
+                <p class="text-xs text-brand-muted">Lait de coco, vanille & rhum</p>
               </div>
             </div>
             <a 
               href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20du%20Kremas%20!" 
               target="_blank"
-              class="text-xs font-bold text-paper-gold hover:underline inline-flex items-center gap-1 mt-2"
+              class="text-xs font-bold text-brand-orange hover:underline inline-flex items-center gap-1 mt-3"
             >
               <span>Réserver une bouteille</span>
               <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
@@ -328,28 +281,20 @@
           </div>
 
           <!-- Mini Card 2: Fritay -->
-          <div class="paper-card rounded-3xl p-6 flex-1 flex flex-col justify-between group cursor-pointer" onmouseenter="switchBg('bgFritay')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-paper-ember bg-paper-ember/10 border border-paper-ember/30 px-3 py-1 rounded-full">
-                5@7 & Soirées
-              </span>
-              <span class="text-xs font-mono text-slate-400">Plateau</span>
-            </div>
-            <div class="flex items-center gap-4 my-2">
-              <img src="./assets/fritay.webp" alt="Fritay" class="w-14 h-14 object-cover rounded-xl border border-white/10">
-              <div>
-                <h4 class="font-bold font-display text-white text-base">Plateau Fritay</h4>
-                <p class="text-xs text-slate-300">Accras, marinades & saucisses</p>
+          <div class="bento-card p-6 bg-brand-dark text-white border-brand-dark flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1 text-amber-400 text-sm mb-2">
+                ★★★★★
               </div>
+              <h4 class="font-bold font-display text-lg mb-1">Qualité Artisanale</h4>
+              <p class="text-xs text-neutral-300 leading-relaxed">
+                Recettes authentiques de famille. Ingrédients frais préparés avec générosité le jour même.
+              </p>
             </div>
-            <a 
-              href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20le%20Plateau%20Fritay%20!" 
-              target="_blank"
-              class="text-xs font-bold text-paper-ember hover:underline inline-flex items-center gap-1 mt-2"
-            >
-              <span>Commander le plateau</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-            </a>
+            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-neutral-400">
+              <span>QUÉBEC & LÉVIS</span>
+              <span class="text-brand-orange font-bold">CHEF JUDE</span>
+            </div>
           </div>
 
         </div>
@@ -359,95 +304,94 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- SPECIALTIES MENU SECTION WITH PAPER TEXTURE & DYNAMIC SHADER HEADERS -->
-  <!-- ========================================================================= -->
-  <section id="menu" class="py-24 relative z-10 border-t border-white/10 bg-noir-950/60 backdrop-blur-md">
+  <!-- MENU / SPECIALTIES BENTO GRID -->
+  <section id="menu" class="py-20 bg-white border-y border-brand-border">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
-          <span class="font-mono text-xs uppercase tracking-wider text-paper-gold block mb-2">// SÉLECTION CULINAIRE</span>
-          <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white">
-            Nos Plats à la Caille
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-orange block mb-2">Les Délices à la Caille</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-brand-dark">
+            Nos Plats & Spécialités
           </h2>
         </div>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-md leading-relaxed">
-          Survolez une spécialité pour l'admirer et commander directement votre part du festin de week-end auprès de Chef Jude.
+        <p class="text-xs sm:text-sm text-brand-muted max-w-md">
+          Commandez à la carte pour vos soupers du week-end ou sous forme de plateaux à partager entre amis.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Dishes Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- CARD 1: LALO -->
-        <div class="paper-card rounded-3xl p-6 flex flex-col justify-between group cursor-pointer" onmouseenter="switchBg('bgLalo')">
+        <div class="bento-card p-5 flex flex-col justify-between group">
           <div>
-            <div class="aspect-[16/10] rounded-2xl overflow-hidden mb-6 bg-black/40 border border-white/10 relative">
-              <img src="./assets/lalo.jpg" alt="Lalo d'Haïti" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-              <span class="absolute top-3 right-3 bg-paper-gold text-noir-950 text-[10px] font-mono font-bold uppercase px-3 py-1 rounded-full shadow">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-brand-bgAlt relative">
+              <img src="./assets/lalo.jpg" alt="Lalo d'Haïti" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-brand-dark text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded-full">
                 Tradition
               </span>
             </div>
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-2xl font-bold font-display text-white">Lalo d'Haïti Traditionnel</h3>
-            </div>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-              Véritables feuilles de lalo sélectionnées et mijotées avec soin, viandes savoureuses et crabes. Le trésor de l'Artibonite.
+            <h3 class="text-lg font-bold font-display text-brand-dark mb-1">Lalo d'Haïti Traditionnel</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">
+              Feuilles de lalo mijotées lentement avec viandes tendres et crabes. La recette emblématique d'Haïti.
             </p>
           </div>
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20le%20Lalo%20!" 
             target="_blank"
-            class="w-full py-3.5 rounded-full bg-white/10 hover:bg-paper-ember text-white font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2"
+            class="w-full py-2.5 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-1.5"
           >
-            <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-[#25D366]"></i>
             <span>Commander le Lalo</span>
           </a>
         </div>
 
         <!-- CARD 2: DINDE CRÉOLE -->
-        <div class="paper-card rounded-3xl p-6 flex flex-col justify-between group cursor-pointer" onmouseenter="switchBg('bgDinde')">
+        <div class="bento-card p-5 flex flex-col justify-between group">
           <div>
-            <div class="aspect-[16/10] rounded-2xl overflow-hidden mb-6 bg-black/40 border border-white/10 relative">
-              <img src="./assets/dinde.jpg" alt="Dinde Créole" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-              <span class="absolute top-3 right-3 bg-white text-noir-950 text-[10px] font-mono font-bold uppercase px-3 py-1 rounded-full shadow">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-brand-bgAlt relative">
+              <img src="./assets/dinde.jpg" alt="Dinde Créole" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-500 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded-full">
                 Fêtes
               </span>
             </div>
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-2xl font-bold font-display text-white">Dinde Créole Dorée</h3>
-            </div>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-              Morceaux de dinde assaisonnés aux herbes fraîches et dorés au four. Peau croustillante et chair tendre parfumée.
+            <h3 class="text-lg font-bold font-display text-brand-dark mb-1">Dinde Créole Dorée</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">
+              Morceaux de dinde assaisonnés aux épices antillaises et dorés au four. Tendre, juteuse et très parfumée.
             </p>
           </div>
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20la%20Dinde%20Créole%20!" 
             target="_blank"
-            class="w-full py-3.5 rounded-full bg-white/10 hover:bg-paper-ember text-white font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2"
+            class="w-full py-2.5 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-1.5"
           >
-            <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-[#25D366]"></i>
             <span>Commander la Dinde</span>
           </a>
         </div>
 
-        <!-- CARD 3: BUFFETS & SUR MESURE -->
-        <div class="paper-card rounded-3xl p-6 flex flex-col justify-between border-paper-gold/30">
+        <!-- CARD 3: FRITAY -->
+        <div class="bento-card p-5 flex flex-col justify-between group">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-paper-gold/20 flex items-center justify-center text-paper-gold mb-6 border border-paper-gold/40">
-              <i data-lucide="crown" class="w-6 h-6"></i>
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-brand-bgAlt relative">
+              <img src="./assets/fritay.webp" alt="Plateau Fritay" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-brand-orange text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded-full">
+                5@7 & Soirées
+              </span>
             </div>
-            <span class="font-mono text-xs text-paper-gold uppercase tracking-wider block mb-1">Sur Mesure</span>
-            <h3 class="text-2xl font-bold font-display text-white mb-3">Buffets & Grands Événements</h3>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-              Riz Djon Djon, soupe Joumou, sauces pois, bananes pesées : Chef Jude prépare votre menu sur mesure pour 10 à 300 personnes.
+            <h3 class="text-lg font-bold font-display text-brand-dark mb-1">Plateau Fritay Festif</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-4">
+              Accras chauds, marinades, saucisses créoles, bananes pesées et bocal de pikliz fait maison.
             </p>
           </div>
           <a 
-            href="#commande" 
-            class="w-full py-3.5 rounded-full bg-paper-ember hover:bg-white hover:text-noir-950 text-white font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2"
+            href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20le%20Plateau%20Fritay%20!" 
+            target="_blank"
+            class="w-full py-2.5 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-1.5"
           >
-            <span>Demander une Soumission</span>
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-[#25D366]"></i>
+            <span>Commander le Fritay</span>
           </a>
         </div>
 
@@ -456,70 +400,89 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- TRAITEUR SERVICE SECTION: THE EXACT 3 FORMULAS -->
-  <!-- ========================================================================= -->
-  <section id="traiteur" class="py-24 relative z-10">
+  <!-- TRAITEUR SECTION (THE EXACT 3 FORMULAS IN TYPEDREAM BENTO STYLE) -->
+  <section id="traiteur" class="py-20 bg-brand-bg">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="font-mono text-xs uppercase tracking-wider text-paper-gold block mb-2">// FORMULES CLÉ EN MAIN</span>
-        <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white mb-4">
-          Nos Formules Traiteur
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-orange block mb-2">Formules Clé en Main</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-brand-dark mb-3">
+          Nos 3 Formules Traiteur
         </h2>
-        <p class="text-slate-300 text-xs sm:text-base">
-          Des formules éprouvées pour vos soirées, mariages et événements corporatifs à Québec et environs.
+        <p class="text-xs sm:text-sm text-brand-muted">
+          Idéal pour vos réceptions privées, mariages et événements corporatifs à Québec.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- 01 // COCKTAIL -->
-        <div class="paper-card rounded-3xl p-8 flex flex-col justify-between">
+        <div class="bento-card p-7 sm:p-8 flex flex-col justify-between">
           <div>
-            <span class="font-mono text-xs text-slate-400 uppercase tracking-wider block mb-1">01 // COCKTAIL</span>
-            <h3 class="text-2xl font-bold font-display text-white mb-3">Soirée Fritay & 5@7</h3>
-            <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-muted block mb-1">01 // COCKTAIL</span>
+            <h3 class="text-2xl font-bold font-display text-brand-dark mb-3">Soirée Fritay & 5@7</h3>
+            <p class="text-xs sm:text-sm text-brand-body leading-relaxed mb-6">
               Plateaux chauds de bouchées et finger food créole pour vos réunions d'amis et lancements.
             </p>
-            <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-8 border-t border-white/10 pt-4">
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Accras croustillants & marinades</li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Bouchées de Griot & Pikliz</li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Bananes pesées dorées</li>
-            </ul>
+            <div class="space-y-2.5 text-xs text-brand-dark mb-8 border-t border-brand-border pt-4">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
+                <span>Accras croustillants & marinades</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
+                <span>Bouchées de Griot & Pikliz</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
+                <span>Bananes pesées dorées</span>
+              </div>
+            </div>
           </div>
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20souhaite%20r%C3%A9server%20la%20formule%2001%20//%20Cocktail%20Soir%C3%A9e%20Fritay%20%26%205%407" 
             target="_blank"
-            class="w-full py-3.5 rounded-full bg-white/10 hover:bg-white hover:text-noir-950 text-white font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2"
+            class="w-full py-3 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2"
           >
             <span>Réserver Cocktail</span>
             <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
           </a>
         </div>
 
-        <!-- 02 // GRAND BUFFET (PRESTIGE & MARIAGES) -->
-        <div class="paper-card rounded-3xl p-8 flex flex-col justify-between border-2 border-paper-ember relative shadow-2xl">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-paper-ember text-white px-4 py-1 rounded-full text-[10px] font-black uppercase font-mono tracking-wider">
+        <!-- 02 // GRAND BUFFET (FEATURED PRESTIGE) -->
+        <div class="bento-card p-7 sm:p-8 flex flex-col justify-between border-2 border-brand-orange relative shadow-xl">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-orange text-white px-3.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider font-mono">
             PRESTIGE & MARIAGES
           </div>
           <div>
-            <span class="font-mono text-xs text-paper-gold uppercase tracking-wider block mb-1 mt-1">02 // GRAND BUFFET</span>
-            <h3 class="text-2xl font-bold font-display text-white mb-3">Le Banquet Royal</h3>
-            <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-orange block mb-1 mt-1">02 // GRAND BUFFET</span>
+            <h3 class="text-2xl font-bold font-display text-brand-dark mb-3">Le Banquet Royal</h3>
+            <p class="text-xs sm:text-sm text-brand-body leading-relaxed mb-6">
               Le grand festin créole pour mariages, baptêmes et célébrations familiales inoubliables.
             </p>
-            <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-8 border-t border-white/10 pt-4">
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Griot doré & Dinde assaisonnée</li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Riz Diri Djon Djon ou Riz collé</li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Salade russe, sauce pois & pikliz</li>
-              <li class="flex items-center gap-2.5 font-bold text-paper-gold"><i data-lucide="gift" class="w-4 h-4"></i> Dégustation de Kremas offerte</li>
-            </ul>
+            <div class="space-y-2.5 text-xs text-brand-dark mb-8 border-t border-brand-border pt-4">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
+                <span class="font-semibold">Griot doré & Dinde assaisonnée</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
+                <span>Riz Diri Djon Djon ou Riz collé</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
+                <span>Salade russe, sauce pois & pikliz</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
+                <span class="font-bold text-brand-orange">Dégustation de Kremas offerte</span>
+              </div>
+            </div>
           </div>
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20souhaite%20r%C3%A9server%20la%20formule%2002%20//%20Le%20Banquet%20Royal%20(Prestige%20%26%20Mariages)" 
             target="_blank"
-            class="w-full py-3.5 rounded-full bg-paper-ember hover:bg-white hover:text-noir-950 text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-lg flex items-center justify-center gap-2"
+            class="w-full py-3.5 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-md flex items-center justify-center gap-2"
           >
             <span>Réserver ce Banquet</span>
             <i data-lucide="message-circle" class="w-4 h-4"></i>
@@ -527,23 +490,32 @@
         </div>
 
         <!-- 03 // CORPORATIF -->
-        <div class="paper-card rounded-3xl p-8 flex flex-col justify-between">
+        <div class="bento-card p-7 sm:p-8 flex flex-col justify-between">
           <div>
-            <span class="font-mono text-xs text-slate-400 uppercase tracking-wider block mb-1">03 // CORPORATIF</span>
-            <h3 class="text-2xl font-bold font-display text-white mb-3">Repas d'Entreprise</h3>
-            <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-muted block mb-1">03 // CORPORATIF</span>
+            <h3 class="text-2xl font-bold font-display text-brand-dark mb-3">Repas d'Entreprise</h3>
+            <p class="text-xs sm:text-sm text-brand-body leading-relaxed mb-6">
               Boîtes repas chaudes et scellées ou buffet chaud livré sur site pour vos réunions d'affaires.
             </p>
-            <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-8 border-t border-white/10 pt-4">
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Boîtes repas individuelles prêtes</li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Facturation d'entreprise claire</li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-paper-gold"></i> Livraison ponctuelle garantie</li>
-            </ul>
+            <div class="space-y-2.5 text-xs text-brand-dark mb-8 border-t border-brand-border pt-4">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
+                <span>Boîtes repas individuelles prêtes</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
+                <span>Facturation d'entreprise claire</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
+                <span>Livraison ponctuelle garantie</span>
+              </div>
+            </div>
           </div>
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20souhaite%20une%20soumission%20pour%20la%20formule%2003%20//%20Corporatif%20Repas%20d%27Entreprise" 
             target="_blank"
-            class="w-full py-3.5 rounded-full bg-white/10 hover:bg-white hover:text-noir-950 text-white font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2"
+            class="w-full py-3 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2"
           >
             <span>Soumission Entreprise</span>
             <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
@@ -551,49 +523,46 @@
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- CHEF JUDE SPOTLIGHT -->
-  <!-- ========================================================================= -->
-  <section id="chef" class="py-24 relative z-10 border-t border-white/10 bg-noir-950/60 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8">
-      <div class="paper-card rounded-3xl p-8 sm:p-14 border border-white/10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+  <!-- CHEF JUDE PROFILE BENTO -->
+  <section id="chef" class="py-20 bg-white border-t border-brand-border">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8">
+      <div class="bento-card p-8 sm:p-12 border border-brand-border">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div class="lg:col-span-5">
-            <div class="relative rounded-2xl overflow-hidden aspect-square border border-white/15">
+            <div class="aspect-square rounded-2xl overflow-hidden bg-brand-bgAlt border border-brand-border">
               <img src="./assets/chef_jude.jpg" alt="Chef Jude" class="w-full h-full object-cover">
-              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-noir-950/80 backdrop-blur border border-white/10 flex items-center justify-between font-mono text-xs">
-                <span class="text-paper-gold font-bold">CHEF JUDE // L'ÂME DU GOÛT</span>
-                <span class="text-slate-400">QUÉBEC</span>
-              </div>
             </div>
           </div>
 
-          <div class="lg:col-span-7 space-y-6">
-            <span class="font-mono text-xs uppercase tracking-wider text-paper-ember font-bold">L'ARTISAN DE LA CUISINE HAÏTIENNE</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white">
-              Chef Jude & La Passion du Geste Vrai
+          <div class="lg:col-span-7 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-orangeLight text-brand-orange font-bold text-xs">
+              <span>L'Artisan Culinaire</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-brand-dark">
+              Chef Jude & La Passion du Goût à la Caille
             </h2>
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Basé dans la région de Québec et suivi fidèlement sur sa page <strong>Judo Douceur Lakay</strong>, Chef Jude honore les recettes de famille transmises de génération en génération. Aucun compromis sur la fraîcheur des herbes, la richesse des marinades et le temps de mijotage.
+            <p class="text-xs sm:text-sm text-brand-body leading-relaxed">
+              Basé dans la région de Québec et suivi sur sa page <strong>Judo Douceur Lakay</strong>, Chef Jude perpétue la véritable tradition culinaire haïtienne. Des marinades longues aux cuissons lentes, chaque plat est préparé avec générosité et amour du pays.
             </p>
-            <div class="flex flex-wrap items-center gap-4 pt-2">
+            <div class="flex flex-wrap items-center gap-3 pt-2">
               <a 
                 href="https://www.facebook.com/JudoDouceurlakay" 
                 target="_blank" 
-                class="px-5 py-2.5 rounded-full bg-blue-600/20 text-blue-300 hover:bg-blue-600 hover:text-white font-bold text-xs uppercase tracking-wider transition-all border border-blue-500/30 flex items-center gap-2"
+                class="px-4 py-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5"
               >
-                <i data-lucide="facebook" class="w-4 h-4 text-blue-400"></i>
-                <span>Rejoindre la Communauté Facebook</span>
+                <i data-lucide="facebook" class="w-3.5 h-3.5"></i>
+                <span>Facebook Judo Douceur Lakay</span>
               </a>
               <a 
                 href="tel:4389221961" 
-                class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white hover:text-noir-950 text-white font-bold text-xs uppercase tracking-wider transition-all border border-white/10 flex items-center gap-2"
+                class="px-4 py-2 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5"
               >
-                <i data-lucide="phone" class="w-4 h-4 text-paper-gold"></i>
+                <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-orange"></i>
                 <span>438-922-1961</span>
               </a>
             </div>
@@ -604,148 +573,143 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- FAST ORDER & RESERVATION FORM -->
-  <!-- ========================================================================= -->
-  <section id="commande" class="py-24 relative z-10 max-w-4xl mx-auto px-6 sm:px-8">
-    <div class="text-center mb-12">
-      <span class="font-mono text-xs uppercase tracking-wider text-paper-gold block mb-2">// RÉPONSE SOUS 24H</span>
-      <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white mb-3">
-        Réservez Votre Commande à la Caille
-      </h2>
-      <p class="text-slate-300 text-xs sm:text-sm">
-        Remplissez ce formulaire direct ou écrivez sur WhatsApp au <strong>438-922-1961</strong>.
-      </p>
-    </div>
-
-    <div class="paper-card rounded-3xl p-8 sm:p-12 border border-white/15 shadow-2xl">
-      <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();" class="space-y-6">
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Nom & Prénom *</label>
-            <input type="text" required placeholder="ex: Jean Dupont" class="w-full bg-noir-950/80 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-paper-gold transition-colors">
-          </div>
-          <div>
-            <label class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Numéro de Téléphone *</label>
-            <input type="tel" required placeholder="ex: 418-555-0199" class="w-full bg-noir-950/80 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-paper-gold transition-colors">
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Formule Souhaitée</label>
-            <select class="w-full bg-noir-950 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-paper-gold transition-colors font-sans">
-              <option class="bg-noir-950">01 // COCKTAIL - Soirée Fritay & 5@7</option>
-              <option class="bg-noir-950">02 // GRAND BUFFET - Le Banquet Royal</option>
-              <option class="bg-noir-950">03 // CORPORATIF - Repas d'Entreprise</option>
-              <option class="bg-noir-950">Plats à la carte (Griot, Lalo, Dinde)</option>
-              <option class="bg-noir-950">Bouteilles de Kremas Maison</option>
-            </select>
-          </div>
-          <div>
-            <label class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Date de l'Événement</label>
-            <input type="date" class="w-full bg-noir-950/80 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-paper-gold transition-colors">
-          </div>
-        </div>
-
-        <div>
-          <label class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Détails & Nombre de Convives</label>
-          <textarea rows="3" placeholder="Nombre d'invités, lieu de livraison à Québec ou Lévis, demandes particulières..." class="w-full bg-noir-950/80 border border-white/15 rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-paper-gold transition-colors"></textarea>
-        </div>
-
-        <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-paper-ember to-amber-600 hover:from-paper-gold hover:to-paper-ember text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl shadow-paper-ember/25">
-          Transmettre ma Demande à Chef Jude
-        </button>
-
-      </form>
-
-      <div id="orderSuccess" class="hidden text-center py-10">
-        <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
-          <i data-lucide="check" class="w-8 h-8"></i>
-        </div>
-        <h3 class="text-2xl font-bold font-display text-white mb-2">Demande Transmise !</h3>
-        <p class="text-slate-300 text-sm max-w-md mx-auto">
-          Mèsi anpil ! Chef Jude vous recontactera rapidement par téléphone ou WhatsApp pour confirmer votre commande.
+  <!-- FAST RESERVATION / ORDER FORM -->
+  <section id="commande" class="py-20 bg-brand-bg">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8">
+      
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-orange block mb-2">Confirmation Rapide</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-brand-dark mb-2">
+          Réservez Votre Commande
+        </h2>
+        <p class="text-xs sm:text-sm text-brand-muted">
+          Remplissez le formulaire ci-dessous ou écrivez sur WhatsApp au <strong>438-922-1961</strong>.
         </p>
+      </div>
+
+      <div class="bento-card p-8 sm:p-10 shadow-sm">
+        <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();" class="space-y-5">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Nom & Prénom *</label>
+              <input type="text" required placeholder="ex: Jean Dupont" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Téléphone *</label>
+              <input type="tel" required placeholder="ex: 418-555-0199" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Formule Souhaitée</label>
+              <select class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors font-sans">
+                <option>01 // COCKTAIL - Soirée Fritay & 5@7</option>
+                <option>02 // GRAND BUFFET - Le Banquet Royal</option>
+                <option>03 // CORPORATIF - Repas d'Entreprise</option>
+                <option>Plats à la carte (Griot, Lalo, Dinde)</option>
+                <option>Bouteilles de Kremas Maison</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Date de l'Événement</label>
+              <input type="date" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Détails & Nombre d'Invités</label>
+            <textarea rows="3" placeholder="Nombre de personnes, adresse de livraison à Québec ou Lévis, demandes particulières..." class="w-full bg-brand-bg border border-brand-border rounded-xl p-4 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md shadow-brand-orange/20">
+            Transmettre ma Demande à Chef Jude
+          </button>
+
+        </form>
+
+        <div id="orderSuccess" class="hidden text-center py-10">
+          <div class="w-14 h-14 bg-brand-greenLight text-brand-green rounded-full flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="check" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-bold font-display text-brand-dark mb-1">Demande Transmise !</h3>
+          <p class="text-xs sm:text-sm text-brand-muted max-w-sm mx-auto">
+            Mèsi anpil ! Chef Jude vous recontactera rapidement par téléphone ou WhatsApp pour confirmer votre commande.
+          </p>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- TESTIMONIALS -->
-  <!-- ========================================================================= -->
-  <section id="avis" class="py-20 relative z-10 max-w-6xl mx-auto px-6 sm:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <div class="text-paper-gold text-base mb-2 font-mono">★★★★★</div>
-      <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-white">
-        La Voix de nos Clients
-      </h2>
-    </div>
+  <!-- REVIEWS SECTION -->
+  <section id="avis" class="py-16 bg-white border-t border-brand-border">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8">
+      <div class="text-center mb-12">
+        <div class="text-amber-500 text-sm mb-1">★★★★★</div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-brand-dark">
+          Ce que disent nos clients
+        </h2>
+      </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="paper-card p-8 rounded-3xl">
-        <p class="text-slate-300 text-xs sm:text-sm italic mb-6 leading-relaxed">
-          « Le meilleur griot de la région de Québec ! Chaud, croustillant, généreux et un pikliz dosé à la perfection. »
-        </p>
-        <div class="font-mono font-bold text-xs text-paper-gold uppercase tracking-wider">Marc-Antoine D. • Québec</div>
-      </div>
-      <div class="paper-card p-8 rounded-3xl">
-        <p class="text-slate-300 text-xs sm:text-sm italic mb-6 leading-relaxed">
-          « Chef Jude a orchestré notre fête de famille (80 convives). Tout le monde s'est régalé du début à la fin ! »
-        </p>
-        <div class="font-mono font-bold text-xs text-paper-gold uppercase tracking-wider">Élodie & Jean-Marc • Lévis</div>
-      </div>
-      <div class="paper-card p-8 rounded-3xl">
-        <p class="text-slate-300 text-xs sm:text-sm italic mb-6 leading-relaxed">
-          « Le Kremas maison est incomparable : onctueux, parfumé, parfait pour les grandes occasions. »
-        </p>
-        <div class="font-mono font-bold text-xs text-paper-gold uppercase tracking-wider">Nathalie T. • Sainte-Foy</div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bento-card p-6">
+          <p class="text-xs sm:text-sm text-brand-body italic mb-4 leading-relaxed">
+            « Le meilleur griot de la région de Québec ! Chaud, croustillant, généreux et un pikliz dosé à la perfection. »
+          </p>
+          <div class="font-bold text-xs text-brand-dark uppercase">Marc-Antoine D. • Québec</div>
+        </div>
+        <div class="bento-card p-6">
+          <p class="text-xs sm:text-sm text-brand-body italic mb-4 leading-relaxed">
+            « Chef Jude a orchestré notre fête de famille (80 convives). Tout le monde s'est régalé du début à la fin ! »
+          </p>
+          <div class="font-bold text-xs text-brand-dark uppercase">Élodie & Jean-Marc • Lévis</div>
+        </div>
+        <div class="bento-card p-6">
+          <p class="text-xs sm:text-sm text-brand-body italic mb-4 leading-relaxed">
+            « Le Kremas maison est incomparable : onctueux, parfumé, parfait pour les grandes occasions. »
+          </p>
+          <div class="font-bold text-xs text-brand-dark uppercase">Nathalie T. • Sainte-Foy</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================================= -->
   <!-- FOOTER -->
-  <!-- ========================================================================= -->
-  <footer class="border-t border-white/10 py-12 text-xs font-mono text-slate-400 bg-noir-950/80 backdrop-blur relative z-10">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+  <footer class="bg-white border-t border-brand-border py-10 text-xs text-brand-muted">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <img src="./assets/logo.png" alt="Douceurs Lakay" class="w-8 h-8 object-contain">
-        <span class="font-display font-bold text-white text-sm">Douceurs Lakay • Chef Jude</span>
+        <img src="./assets/logo.png" alt="Douceurs Lakay" class="w-7 h-7 object-contain">
+        <span class="font-extrabold text-brand-dark font-display text-sm">Douceurs Lakay • Chef Jude</span>
       </div>
-      <div class="flex items-center gap-6 font-mono text-xs">
-        <a href="tel:4389221961" class="hover:text-paper-gold transition-colors">438-922-1961</a>
-        <a href="https://www.facebook.com/JudoDouceurlakay" target="_blank" class="hover:text-paper-gold transition-colors">Facebook</a>
-        <a href="https://tiktok.com/@douceurslakay" target="_blank" class="hover:text-paper-gold transition-colors">TikTok</a>
+      <div class="flex items-center gap-5 font-semibold">
+        <a href="tel:4389221961" class="hover:text-brand-dark">438-922-1961</a>
+        <a href="https://www.facebook.com/JudoDouceurlakay" target="_blank" class="hover:text-brand-dark">Facebook</a>
+        <a href="https://tiktok.com/@douceurslakay" target="_blank" class="hover:text-brand-dark">TikTok</a>
       </div>
-      <div class="text-[10px] text-slate-500">
-        © 2026 DOUCEURS LAKAY // QUÉBEC CITY & ENVIRONS
+      <div>
+        © 2026 Douceurs Lakay. Québec & Environs.
       </div>
     </div>
   </footer>
 
-  <!-- FLOATING WHATSAPP CTA -->
+  <!-- FLOATING WHATSAPP BUTTON -->
   <a 
     href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20pour%20ce%20week-end%20!" 
     target="_blank" 
-    class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
+    class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#1EBE5D] text-white px-5 py-3.5 rounded-full shadow-xl hover:scale-105 transition-all flex items-center gap-2 group font-bold text-xs uppercase tracking-wider"
     aria-label="Commander sur WhatsApp"
   >
-    <i data-lucide="message-circle" class="w-6 h-6"></i>
-    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out px-0 group-hover:px-2 font-bold text-xs uppercase tracking-wider font-sans">
-      Commander sur WhatsApp
-    </span>
+    <i data-lucide="message-circle" class="w-5 h-5"></i>
+    <span>Commander sur WhatsApp</span>
   </a>
 
-  <!-- ========================================================================= -->
-  <!-- PROCEDURAL PAPER SHADER ENGINE (JAVASCRIPT / CANVAS 2D NORMAL SIMULATION) -->
-  <!-- ========================================================================= -->
+  <!-- SCRIPTS -->
   <script>
     lucide.createIcons();
 
-    // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenuBtn) {
@@ -754,132 +718,10 @@
       });
     }
 
-    // Dynamic Background Stage
-    const bgs = {
-      bgHero: document.getElementById('bgHero'),
-      bgLalo: document.getElementById('bgLalo'),
-      bgFritay: document.getElementById('bgFritay'),
-      bgDinde: document.getElementById('bgDinde'),
-      bgKremas: document.getElementById('bgKremas')
-    };
-
-    function switchBg(activeKey) {
-      Object.keys(bgs).forEach(key => {
-        if (!bgs[key]) return;
-        if (key === activeKey) {
-          bgs[key].style.opacity = '1';
-          bgs[key].style.transform = 'scale(1.06)';
-        } else {
-          bgs[key].style.opacity = '0';
-          bgs[key].style.transform = 'scale(1.0)';
-        }
-      });
-    }
-
     function handleOrderSubmit() {
       document.getElementById('orderForm').classList.add('hidden');
       document.getElementById('orderSuccess').classList.remove('hidden');
     }
-
-    // =========================================================================
-    // GPU PROCEDURAL PAPER SHADER SCRIPT
-    // Simulates dynamic normal-mapped crumpled tactile archival paper in dark mode
-    // =========================================================================
-    (function initPaperShader() {
-      const canvas = document.getElementById('paperShaderCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let width, height;
-      let mouse = { x: 0.5, y: 0.3, targetX: 0.5, targetY: 0.3 };
-
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      }
-      window.addEventListener('resize', resize);
-      resize();
-
-      window.addEventListener('mousemove', (e) => {
-        mouse.targetX = e.clientX / width;
-        mouse.targetY = e.clientY / height;
-      });
-
-      // Generate procedural fibers & creases
-      const creases = [];
-      for (let i = 0; i < 40; i++) {
-        creases.push({
-          x: Math.random() * 2000,
-          y: Math.random() * 2000,
-          length: 120 + Math.random() * 300,
-          angle: Math.random() * Math.PI * 2,
-          opacity: 0.03 + Math.random() * 0.05,
-          speed: 0.0002 + Math.random() * 0.0004
-        });
-      }
-
-      let time = 0;
-      function render() {
-        time += 0.008;
-        mouse.x += (mouse.targetX - mouse.x) * 0.05;
-        mouse.y += (mouse.targetY - mouse.y) * 0.05;
-
-        ctx.clearRect(0, 0, width, height);
-
-        // 1. Dark Paper Base Tone
-        const baseGrad = ctx.createRadialGradient(
-          width * mouse.x, height * mouse.y, 10,
-          width * 0.5, height * 0.5, Math.max(width, height)
-        );
-        baseGrad.addColorStop(0, 'rgba(24, 28, 38, 0.45)');
-        baseGrad.addColorStop(0.5, 'rgba(12, 14, 19, 0.6)');
-        baseGrad.addColorStop(1, 'rgba(6, 7, 10, 0.85)');
-
-        ctx.fillStyle = baseGrad;
-        ctx.fillRect(0, 0, width, height);
-
-        // 2. Paper Creases / Fiber Folds with dynamic specular highlights
-        ctx.save();
-        creases.forEach((c, idx) => {
-          const cx = (c.x + Math.sin(time * 0.5 + idx) * 30) % width;
-          const cy = (c.y + Math.cos(time * 0.5 + idx) * 30) % height;
-          
-          const grad = ctx.createLinearGradient(
-            cx, cy,
-            cx + Math.cos(c.angle) * c.length,
-            cy + Math.sin(c.angle) * c.length
-          );
-          
-          // Lighting response to cursor
-          const distToMouse = Math.hypot(cx - width * mouse.x, cy - height * mouse.y);
-          const lightIntensity = Math.max(0, 1 - distToMouse / (width * 0.6));
-
-          grad.addColorStop(0, `rgba(255, 255, 255, ${c.opacity * (0.5 + lightIntensity * 1.5)})`);
-          grad.addColorStop(0.5, `rgba(0, 0, 0, ${c.opacity * 1.8})`);
-          grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(
-            cx + Math.cos(c.angle) * c.length,
-            cy + Math.sin(c.angle) * c.length
-          );
-          ctx.stroke();
-        });
-        ctx.restore();
-
-        // 3. Tactile Paper Fiber Grid (Micro grain)
-        ctx.fillStyle = 'rgba(243, 239, 230, 0.015)';
-        for (let y = 0; y < height; y += 80) {
-          ctx.fillRect(0, y + (Math.sin(y + time) * 2), width, 1);
-        }
-
-        requestAnimationFrame(render);
-      }
-
-      render();
-    })();
   </script>
 </body>
 </html>
