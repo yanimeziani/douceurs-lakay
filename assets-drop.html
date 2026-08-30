@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr" class="bg-[#F4F1E8] text-[#111214]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dépôt d'Actifs Médias | Made Lucid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Instrument+Serif:ital,wght@1,400&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lucid: {
+              ivory: '#F4F1E8',
+              carbon: '#111214',
+              surface: '#FFFFFF',
+              border: '#DDD8CB',
+              orange: '#FF5A0A',
+              orangeHover: '#E04800',
+              graphite: '#3D4148'
+            }
+          },
+          fontFamily: {
+            sans: ['"Manrope"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            mono: ['"IBM Plex Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-lucid-ivory font-sans antialiased min-h-screen flex flex-col justify-between p-6 sm:p-12">
+
+  <div class="max-w-2xl mx-auto w-full">
+    
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-8 pb-6 border-b border-lucid-border">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded bg-lucid-carbon text-white flex items-center justify-center font-mono font-bold text-xs">
+          ML
+        </div>
+        <span class="font-extrabold text-sm tracking-tight">MADE LUCID</span>
+      </div>
+      <span class="font-mono text-[10px] uppercase tracking-wider text-lucid-orange font-bold bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+        Dossier : Douceurs Lakay
+      </span>
+    </div>
+
+    <!-- TITLE -->
+    <div class="mb-8 text-center sm:text-left">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-lucid-carbon mb-2 tracking-tight">
+        Partage de vos Médias & Photos <br>
+        <span class="font-serif italic font-normal text-lucid-orange">pour la mise en ligne</span>
+      </h1>
+      <p class="text-sm text-lucid-graphite leading-relaxed">
+        Déposez vos meilleures photos de plats, vidéos de cuisson et logo en haute définition ci-dessous.
+      </p>
+    </div>
+
+    <!-- ASSET COLLECTION FORM -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-lucid-border shadow-lg space-y-6">
+      
+      <!-- 1. DRIVE / CLOUD LINK -->
+      <div>
+        <label class="block text-xs font-mono font-bold uppercase tracking-wider text-lucid-carbon mb-2 flex items-center gap-2">
+          <i data-lucide="cloud" class="w-4 h-4 text-lucid-orange"></i>
+          <span>1. Lien Google Drive / Dropbox / iCloud (Recommandé)</span>
+        </label>
+        <input 
+          type="url" 
+          id="cloudLink" 
+          placeholder="https://drive.google.com/drive/folders/..." 
+          class="w-full bg-lucid-ivory border border-lucid-border rounded-2xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange"
+        >
+      </div>
+
+      <!-- 2. FILE UPLOAD DROPZONE -->
+      <div>
+        <label class="block text-xs font-mono font-bold uppercase tracking-wider text-lucid-carbon mb-2 flex items-center gap-2">
+          <i data-lucide="upload" class="w-4 h-4 text-lucid-orange"></i>
+          <span>2. Ou Glissez-déposez vos fichiers directement</span>
+        </label>
+        <div class="border-2 border-dashed border-lucid-border hover:border-lucid-orange rounded-2xl p-8 text-center bg-lucid-ivory/50 transition-colors cursor-pointer" onclick="document.getElementById('fileInput').click()">
+          <i data-lucide="image-plus" class="w-8 h-8 text-lucid-graphite mx-auto mb-2"></i>
+          <span class="text-xs font-bold text-lucid-carbon block">Cliquez ou glissez vos photos / vidéos ici</span>
+          <span class="text-[11px] text-lucid-graphite mt-1 block">PNG, JPG, MP4, MOV (jusqu'à 50 Mo par fichier)</span>
+          <input type="file" id="fileInput" multiple class="hidden" onchange="handleFileSelect(event)">
+        </div>
+        <div id="fileList" class="mt-3 space-y-1 text-xs text-lucid-graphite font-mono"></div>
+      </div>
+
+      <!-- 3. SOCIAL VIDEO LINKS -->
+      <div>
+        <label class="block text-xs font-mono font-bold uppercase tracking-wider text-lucid-carbon mb-2 flex items-center gap-2">
+          <i data-lucide="video" class="w-4 h-4 text-lucid-orange"></i>
+          <span>3. Liens de vos publications Facebook / TikTok</span>
+        </label>
+        <textarea 
+          id="socialLinks" 
+          rows="3" 
+          placeholder="Collez les liens des vidéos Facebook ou TikTok que vous voulez voir sur le site..."
+          class="w-full bg-lucid-ivory border border-lucid-border rounded-2xl p-4 text-sm focus:outline-none focus:border-lucid-orange"
+        ></textarea>
+      </div>
+
+      <!-- SUBMIT TO WHATSAPP -->
+      <button 
+        onclick="sendAssetsViaWhatsApp()" 
+        class="w-full py-4 rounded-full bg-lucid-orange hover:bg-lucid-orangeHover text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2"
+      >
+        <i data-lucide="send" class="w-4 h-4"></i>
+        <span>Envoyer les Médias à l'Équipe Made Lucid</span>
+      </button>
+
+    </div>
+
+    <!-- WHATSAPP DIRECT HELPER -->
+    <div class="mt-6 text-center text-xs text-lucid-graphite">
+      Vous préférez envoyer directement par WhatsApp ? <br>
+      <a href="https://wa.me/14389221961" class="font-bold text-lucid-carbon underline hover:text-lucid-orange mt-1 inline-block">
+        👉 Cliquez ici pour transférer vos photos sur WhatsApp (438-922-1961)
+      </a>
+    </div>
+
+  </div>
+
+  <footer class="text-center font-mono text-[10px] text-lucid-graphite mt-12">
+    MADE LUCID // ASSET PIPELINE
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function handleFileSelect(event) {
+      const files = event.target.files;
+      const list = document.getElementById('fileList');
+      list.innerHTML = '';
+      for (let i = 0; i < files.length; i++) {
+        list.innerHTML += `<div>✓ ${files[i].name} (${Math.round(files[i].size/1024)} KB)</div>`;
+      }
+    }
+
+    function sendAssetsViaWhatsApp() {
+      const cloud = document.getElementById('cloudLink').value;
+      const social = document.getElementById('socialLinks').value;
+      const msg = encodeURIComponent(`*ACTIFS MÉDIAS TRANS-MIS // MADE LUCID*\n\n*Lien Cloud (Drive/Dropbox):*\n${cloud || 'Non renseigné'}\n\n*Vidéos / Liens Réseaux:*\n${social || 'Non renseigné'}`);
+      window.open(`https://wa.me/14389221961?text=${msg}`, '_blank');
+    }
+  </script>
+</body>
+</html>

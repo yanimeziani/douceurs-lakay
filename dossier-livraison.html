@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr" class="bg-slate-100 text-slate-900">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dossier Maître de Livraison | Douceurs Lakay • Made Lucid</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF5414',
+              gold: '#E5A93C',
+              dark: '#111215',
+              surface: '#FFFFFF',
+              border: '#E2E8F0'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    @media print {
+      body { background: white !important; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+      .shadow-xl, .shadow-md, .shadow-sm { box-shadow: none !important; border: 1px solid #e2e8f0 !important; }
+    }
+    .specimen-title { letter-spacing: -0.03em; }
+  </style>
+</head>
+<body class="p-4 sm:p-10 font-sans">
+
+  <!-- TOP ACTION BAR (FOR PRINTING / SAVING AS PDF) -->
+  <div class="max-w-5xl mx-auto mb-8 flex items-center justify-between no-print bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+    <div class="flex items-center gap-3">
+      <img src="./assets/logo.png" alt="Logo" class="w-8 h-8 object-contain">
+      <div>
+        <h1 class="font-extrabold font-display text-sm text-slate-900 leading-none">Dossier Maître de Livraison</h1>
+        <p class="text-[11px] text-slate-500 font-mono mt-0.5">Douceurs Lakay • Document de Transmission Client</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-brand-orange text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors">
+        <i data-lucide="printer" class="w-4 h-4"></i>
+        <span>Imprimer / Exporter PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <div class="max-w-5xl mx-auto bg-white rounded-3xl p-8 sm:p-16 border border-slate-200 shadow-xl space-y-16">
+    
+    <!-- 1. COVER PAGE / HEADER -->
+    <header class="border-b border-slate-200 pb-12">
+      <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-6 mb-8">
+        <div>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-brand-orange text-[10px] font-mono font-bold uppercase tracking-wider mb-4 border border-orange-200">
+            LIVRABLE OFFICIEL // VERSION 2.0
+          </span>
+          <h1 class="text-4xl sm:text-5xl font-black font-display tracking-tight text-slate-900 leading-none mb-3">
+            DOSSIER MAÎTRE DE LIVRAISON
+          </h1>
+          <p class="text-lg text-slate-600 font-medium">
+            Plateforme Web, Système de Marque, Catalogue d'Actifs & Stratégie Publicitaire
+          </p>
+        </div>
+        <div class="w-20 h-20 rounded-2xl bg-slate-50 p-2 border border-slate-200 flex items-center justify-center">
+          <img src="./assets/logo.png" alt="Douceurs Lakay" class="w-full h-full object-contain">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-100 font-mono text-xs text-slate-500">
+        <div>
+          <span class="text-[10px] uppercase block text-slate-400">Client :</span>
+          <strong class="text-slate-900 block mt-0.5">Chef Jude (Judo Douceurs)</strong>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase block text-slate-400">Agence :</span>
+          <strong class="text-slate-900 block mt-0.5">Made Lucid</strong>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase block text-slate-400">Date d'émission :</span>
+          <strong class="text-slate-900 block mt-0.5">30 Août 2026</strong>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase block text-slate-400">Région cible :</span>
+          <strong class="text-brand-orange block mt-0.5">Québec, Lévis & Gatineau</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. BRAND IDENTITY & DESIGN SYSTEM -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center font-bold font-mono text-xs">01</span>
+        <h2 class="text-2xl font-bold font-display text-slate-900">Système de Marque & Direction Artistique</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Palette Swatches -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <h3 class="text-xs font-bold uppercase font-mono text-slate-400 tracking-wider">Palette Chromatique</h3>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center justify-between p-2 rounded-lg bg-[#FAFAF9] border border-slate-200">
+              <span class="font-bold text-slate-900">Pierre Douce (Fond)</span>
+              <code class="font-mono text-slate-500">#FAFAF9</code>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg bg-[#FF5414] text-white">
+              <span class="font-bold">Orange Braise (Action)</span>
+              <code class="font-mono">#FF5414</code>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg bg-[#111215] text-white">
+              <span class="font-bold">Noir Carbone (Titres)</span>
+              <code class="font-mono">#111215</code>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg bg-[#E5A93C] text-slate-900">
+              <span class="font-bold">Or Créole (Accent)</span>
+              <code class="font-mono">#E5A93C</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typography Hierarchy -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <h3 class="text-xs font-bold uppercase font-mono text-slate-400 tracking-wider">Typographie</h3>
+          <div class="space-y-3">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-mono">Titres & Display</span>
+              <strong class="font-display text-lg text-slate-900 font-extrabold block leading-tight">Outfit ExtraBold</strong>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block font-mono">Corps & UI</span>
+              <p class="font-sans text-sm text-slate-700 font-medium">Plus Jakarta Sans (400, 500, 600)</p>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 block font-mono">Télémétrie & Badges</span>
+              <p class="font-mono text-xs text-brand-orange uppercase">Space Mono Tracking +0.12em</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logo Emblem -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center text-center">
+          <img src="./assets/logo.png" alt="Logo" class="w-16 h-16 object-contain mb-3 drop-shadow-sm">
+          <h4 class="font-bold text-sm text-slate-900 font-display">Emblème Circulaire Détouré</h4>
+          <p class="text-xs text-slate-500 mt-1">Fond blanc supprimé, transparence alpha intégrale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CORE ASSET INVENTORY -->
+    <section class="space-y-6 page-break">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center font-bold font-mono text-xs">02</span>
+        <h2 class="text-2xl font-bold font-display text-slate-900">Catalogue des Actifs Numériques HD</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2">
+          <div class="aspect-square rounded-xl overflow-hidden mb-2">
+            <img src="./assets/griot.jpg" alt="Griot" class="w-full h-full object-cover">
+          </div>
+          <span class="font-bold text-xs text-slate-900 block font-display">Griot de Porc</span>
+          <span class="font-mono text-[10px] text-slate-500">1200x1600 • 193 Ko</span>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2">
+          <div class="aspect-square rounded-xl overflow-hidden mb-2">
+            <img src="./assets/lalo.jpg" alt="Lalo" class="w-full h-full object-cover">
+          </div>
+          <span class="font-bold text-xs text-slate-900 block font-display">Lalo d'Haïti</span>
+          <span class="font-mono text-[10px] text-slate-500">1388x1600 • 212 Ko</span>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2">
+          <div class="aspect-square rounded-xl overflow-hidden mb-2">
+            <img src="./assets/dinde.jpg" alt="Dinde" class="w-full h-full object-cover">
+          </div>
+          <span class="font-bold text-xs text-slate-900 block font-display">Dinde Créole</span>
+          <span class="font-mono text-[10px] text-slate-500">2048x1878 • 422 Ko</span>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2">
+          <div class="aspect-square rounded-xl overflow-hidden mb-2">
+            <img src="./assets/fritay.webp" alt="Fritay" class="w-full h-full object-cover">
+          </div>
+          <span class="font-bold text-xs text-slate-900 block font-display">Plateau Fritay</span>
+          <span class="font-mono text-[10px] text-slate-500">3408x1500 • 972 Ko</span>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2">
+          <div class="aspect-square rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center">
+            <img src="./assets/kremas.png" alt="Kremas" class="w-3/4 h-3/4 object-contain">
+          </div>
+          <span class="font-bold text-xs text-slate-900 block font-display">Kremas Artisanal</span>
+          <span class="font-mono text-[10px] text-slate-500">4000x2800 • 1.02 Mo</span>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2">
+          <div class="aspect-square rounded-xl overflow-hidden mb-2">
+            <img src="./assets/chef_jude.jpg" alt="Chef Jude" class="w-full h-full object-cover">
+          </div>
+          <span class="font-bold text-xs text-slate-900 block font-display">Chef Jude Portrait</span>
+          <span class="font-mono text-[10px] text-slate-500">1080x1080 • 206 Ko</span>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2">
+          <div class="aspect-square rounded-xl overflow-hidden mb-2">
+            <img src="./assets/event_buffet.webp" alt="Buffet" class="w-full h-full object-cover">
+          </div>
+          <span class="font-bold text-xs text-slate-900 block font-display">Buffet Traiteur</span>
+          <span class="font-mono text-[10px] text-slate-500">1920x1080 • 252 Ko</span>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 overflow-hidden bg-slate-50 p-2 flex flex-col justify-between">
+          <div class="flex-1 flex flex-col items-center justify-center p-2 text-center">
+            <i data-lucide="folder-check" class="w-8 h-8 text-brand-orange mb-2"></i>
+            <span class="font-bold text-xs text-slate-900">134 Médias</span>
+            <span class="text-[10px] text-slate-500">Archives nettoyées</span>
+          </div>
+          <span class="font-mono text-[10px] text-slate-400 block text-center border-t border-slate-200 pt-1">cleaned_assets/</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. THE 3 CATERING FORMULAS -->
+    <section class="space-y-6 page-break">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center font-bold font-mono text-xs">03</span>
+        <h2 class="text-2xl font-bold font-display text-slate-900">Les 3 Formules Traiteur Clé en Main</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- 01 // COCKTAIL -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-slate-400 uppercase tracking-wider block mb-1">01 // COCKTAIL</span>
+            <h3 class="font-bold font-display text-xl text-slate-900 mb-2">Soirée Fritay & 5@7</h3>
+            <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+              Plateaux chauds de bouchées et finger food créole pour vos réunions d'amis et lancements.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 border-t border-slate-200 pt-3">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Accras croustillants & marinades</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Bouchées de Griot & Pikliz</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Bananes pesées dorées</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-200 font-mono text-[11px] text-slate-500">
+            CTA WhatsApp : <code>Réserver Cocktail</code>
+          </div>
+        </div>
+
+        <!-- 02 // GRAND BUFFET -->
+        <div class="p-6 rounded-2xl bg-orange-50/60 border-2 border-brand-orange flex flex-col justify-between relative">
+          <div class="absolute -top-3 right-4 bg-brand-orange text-white text-[9px] font-mono font-black uppercase px-3 py-0.5 rounded-full">
+            PRESTIGE & MARIAGES
+          </div>
+          <div>
+            <span class="font-mono text-xs text-brand-orange uppercase tracking-wider block mb-1">02 // GRAND BUFFET</span>
+            <h3 class="font-bold font-display text-xl text-slate-900 mb-2">Le Banquet Royal</h3>
+            <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+              Le grand festin créole pour mariages, baptêmes et célébrations familiales inoubliables.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-800 border-t border-orange-200 pt-3">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange"></i> Griot doré & Dinde assaisonnée</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange"></i> Riz Diri Djon Djon ou Riz collé</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange"></i> Salade russe, sauce pois & pikliz</li>
+              <li class="flex items-center gap-2 font-bold text-brand-orange"><i data-lucide="gift" class="w-3.5 h-3.5"></i> Dégustation de Kremas offerte</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-3 border-t border-orange-200 font-mono text-[11px] text-brand-orange">
+            CTA WhatsApp : <code>Réserver ce Banquet</code>
+          </div>
+        </div>
+
+        <!-- 03 // CORPORATIF -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-slate-400 uppercase tracking-wider block mb-1">03 // CORPORATIF</span>
+            <h3 class="font-bold font-display text-xl text-slate-900 mb-2">Repas d'Entreprise</h3>
+            <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+              Boîtes repas chaudes et scellées ou buffet chaud livré sur site pour vos réunions d'affaires.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 border-t border-slate-200 pt-3">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Boîtes repas individuelles prêtes</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Facturation d'entreprise claire</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Livraison ponctuelle garantie</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-3 border-t border-slate-200 font-mono text-[11px] text-slate-500">
+            CTA WhatsApp : <code>Soumission Entreprise</code>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. AI VIDEO AD & SEEDANCE 2.5 MARKETING -->
+    <section class="space-y-6 page-break">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center font-bold font-mono text-xs">04</span>
+        <h2 class="text-2xl font-bold font-display text-slate-900">Moteur Publicitaire IA // Seedance 2.5</h2>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 font-mono text-xs">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+          <span class="text-brand-orange font-bold">PIPELINE PUBLICITAIRE FAL.AI / SEEDANCE</span>
+          <span class="text-emerald-400">CONFIGURÉ & CONNECTÉ</span>
+        </div>
+        <p class="text-slate-300 leading-relaxed font-sans text-sm">
+          Le script d'automatisation <code>generate_seedance_ad.py</code> permet de générer à volonté des publicités vidéo verticales (9:16) hyper-réalistes pour TikTok, Instagram Reels et Facebook Ads en utilisant les photos réelles de Chef Jude comme références de style.
+        </p>
+        <div class="bg-black/60 p-4 rounded-xl border border-slate-800 text-[11px] text-slate-300">
+          <code>python3 generate_seedance_ad.py --run</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. DELIVERY SIGN-OFF & INVOICE -->
+    <section class="space-y-6 border-t border-slate-200 pt-10">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center font-bold font-mono text-xs">05</span>
+        <h2 class="text-2xl font-bold font-display text-slate-900">Procès-Verbal de Réception & Règlement</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <h3 class="font-bold text-sm text-slate-900">Livrables Inclus :</h3>
+          <ul class="space-y-2 text-xs text-slate-700 font-medium">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> Site Web Bento Light Mode (index.html)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> Logo officiel détouré transparent</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> 7 Actifs culinaires haute résolution</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> Pipeline publicitaire Seedance 2.5</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> Système d'onboarding & questionnaire maître</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-orange-50 border border-orange-200 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-sm text-brand-orange uppercase font-mono tracking-wider mb-2">Règlement Interac :</h3>
+            <p class="text-2xl font-black font-display text-slate-900">150.00 $ CAD</p>
+            <p class="text-xs text-slate-600 mt-2">
+              Destinataire : <strong>yanimeziani@wealthsimple.me</strong><br>
+              Mot de passe : <strong>Lakay</strong>
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-orange-200 text-[11px] font-mono text-slate-500">
+            Dès réception, pointage DNS vers douceurslakay.com
+          </div>
+        </div>
+      </div>
+
+      <!-- Signatures block -->
+      <div class="grid grid-cols-2 gap-8 pt-8 border-t border-slate-200 font-mono text-xs">
+        <div>
+          <span class="text-slate-400 block mb-8">POUR LE PRESTATAIRE (MADE LUCID) :</span>
+          <div class="border-b border-slate-400 pb-2 font-bold text-slate-900">Made Lucid Creative Agency</div>
+          <span class="text-[10px] text-slate-500">Signature autorisée</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-8">POUR LE CLIENT (DOUCEURS LAKAY) :</span>
+          <div class="border-b border-slate-400 pb-2 font-bold text-slate-900">Chef Jude</div>
+          <span class="text-[10px] text-slate-500">Signature autorisée</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

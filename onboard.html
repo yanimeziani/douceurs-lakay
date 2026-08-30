@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth bg-[#F4F1E8] text-[#111214]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Client | Made Lucid Sovereign Agency</title>
+  <meta name="description" content="Portail d'embarquement et de transmission des actifs de marque pour les projets Made Lucid.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital,wght@0,400;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lucid: {
+              ivory: '#F4F1E8',
+              carbon: '#111214',
+              surface: '#FFFFFF',
+              surfaceMuted: '#ECE8DD',
+              border: '#DDD8CB',
+              orange: '#FF5A0A',
+              orangeHover: '#E04800',
+              orangeSoft: 'rgba(255, 90, 10, 0.08)',
+              graphite: '#3D4148',
+              cobalt: '#315CFF',
+              sage: '#9DB7A5'
+            }
+          },
+          fontFamily: {
+            sans: ['"Manrope"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            mono: ['"IBM Plex Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    ::selection {
+      background: #FF5A0A;
+      color: #FFFFFF;
+    }
+    .tracking-lucid {
+      letter-spacing: -0.04em;
+    }
+    .tracking-mono {
+      letter-spacing: 0.08em;
+    }
+    .step-content {
+      display: none;
+    }
+    .step-content.active {
+      display: block;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-lucid-ivory text-lucid-carbon font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- TOP SOVEREIGN HEADER -->
+  <header class="border-b border-lucid-border bg-lucid-ivory/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- BRAND LOCKUP -->
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-lucid-carbon flex items-center justify-center text-white font-mono font-bold text-xs">
+          ML
+        </div>
+        <div>
+          <span class="text-base font-extrabold tracking-lucid block leading-none">MADE LUCID</span>
+          <span class="font-mono text-[9px] uppercase tracking-mono text-lucid-orange font-semibold block mt-0.5">Sovereign Systems & Web</span>
+        </div>
+      </div>
+
+      <!-- DOSSIER CHIP -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-lucid-surfaceMuted border border-lucid-border font-mono text-[11px] text-lucid-graphite">
+          <span class="w-1.5 h-1.5 rounded-full bg-lucid-orange animate-pulse"></span>
+          <span>DOSSIER: DL-2026-QC</span>
+        </div>
+        <button onclick="prefillDouceursLakay()" class="text-xs font-mono font-semibold px-3 py-1.5 rounded-full bg-lucid-orangeSoft text-lucid-orange hover:bg-lucid-orange hover:text-white transition-all border border-lucid-orange/20">
+          ⚡ Pré-remplir Douceurs Lakay
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-4xl mx-auto px-6 py-12 flex-1 w-full">
+    
+    <!-- HERO TITLE -->
+    <div class="mb-10 text-center sm:text-left">
+      <div class="font-mono text-xs uppercase tracking-mono text-lucid-orange font-bold mb-2">
+        PORTAIL D'ACQUISITION DES ACTIFS & CONTENUS
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-lucid text-lucid-carbon leading-tight mb-3">
+        Embarquement du Projet <br>
+        <span class="font-serif italic font-normal text-lucid-orange">Douceurs Lakay par Chef Jude</span>
+      </h1>
+      <p class="text-sm sm:text-base text-lucid-graphite max-w-2xl leading-relaxed">
+        Ce formulaire structure tous les éléments nécessaires à notre équipe de production pour concevoir votre nouvelle vitrine web sans frictions ni retards.
+      </p>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="mb-10 bg-lucid-surface rounded-2xl p-4 sm:p-6 border border-lucid-border shadow-sm">
+      <div class="flex items-center justify-between text-xs font-mono mb-3 text-lucid-graphite">
+        <span id="stepIndicator" class="font-bold text-lucid-carbon uppercase tracking-mono">ÉTAPE 1 SUR 5 : IDENTITÉ & VISION</span>
+        <span id="progressPercent" class="font-bold text-lucid-orange">20%</span>
+      </div>
+      <div class="w-full bg-lucid-surfaceMuted h-2 rounded-full overflow-hidden">
+        <div id="progressBar" class="bg-lucid-orange h-full w-1/5 transition-all duration-500 ease-out"></div>
+      </div>
+    </div>
+
+    <!-- MULTI-STEP CARD -->
+    <div class="bg-lucid-surface rounded-3xl p-6 sm:p-10 border border-lucid-border shadow-xl">
+      <form id="onboardingForm" onsubmit="event.preventDefault(); handleNext();">
+        
+        <!-- STEP 1: IDENTITÉ & HISTOIRE -->
+        <div class="step-content active" id="step1">
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-mono text-lucid-orange font-bold mb-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Module 01</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-lucid mb-2">Identité, Histoire & Positionnement</h2>
+          <p class="text-xs text-lucid-graphite mb-8">Ces informations alimentent le storytelling et l'accroche principale du site.</p>
+
+          <div class="space-y-6">
+            <div>
+              <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Nom de l'entreprise *</label>
+              <input type="text" id="brandName" required placeholder="ex: Douceurs Lakay" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Nom du Chef / Fondateur *</label>
+                <input type="text" id="founderName" required placeholder="ex: Chef Jude" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Année de création / Expérience</label>
+                <input type="text" id="experienceYears" placeholder="ex: Depuis 2021 (plus de 10 ans en cuisine)" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">L'Arme Secrète / Ce qui vous rend unique *</label>
+              <textarea id="uniqueSecret" rows="3" placeholder="ex: Marinades maison de 48h, épices traditionnelles fraîches, Griot ultra croustillant, Lalo authentique cuisiné selon la méthode ancestrale..." class="w-full bg-lucid-ivory border border-lucid-border rounded-xl p-4 text-sm focus:outline-none focus:border-lucid-orange transition-colors"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Normes & Hygiène</label>
+              <input type="text" id="hygieneCert" placeholder="ex: Conforme aux exigences du MAPAQ, préparation en cuisine professionnelle" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: PLATS, MENUS & TARIFS -->
+        <div class="step-content" id="step2">
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-mono text-lucid-orange font-bold mb-2">
+            <i data-lucide="utensils" class="w-4 h-4"></i>
+            <span>Module 02</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-lucid mb-2">Menus, Plats & Formules Traiteur</h2>
+          <p class="text-xs text-lucid-graphite mb-8">Détaillez vos plats phares et vos formules pour que les clients puissent commander avec clarté.</p>
+
+          <div class="space-y-6">
+            <div>
+              <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Spécialités Principales (Plats & Portions)</label>
+              <textarea id="menuDetails" rows="4" placeholder="ex:
+- Griot de Porc (Portion avec riz collé, bananes pesées, pikliz) - 20$
+- Lalo d'Haïti Authentique - 25$
+- Dinde Assaisonnée au four - 20$
+- Plateau Fritay Festif (pour 4-6 pers.) - 65$" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl p-4 text-sm focus:outline-none focus:border-lucid-orange transition-colors font-mono"></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Douceurs & Boissons (Kremas, Kokiyol)</label>
+                <textarea id="drinksDesserts" rows="3" placeholder="ex: Kremas Artisanal (Bouteille 750ml) - 30$, Boîte de Kokiyol (12 pcs) - 15$" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl p-4 text-sm focus:outline-none focus:border-lucid-orange transition-colors"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Formules Traiteur Événements</label>
+                <textarea id="cateringPackages" rows="3" placeholder="ex: 
+- Cocktail & Fritay (dès 15 pers.)
+- Buffet Royal Mariage / Fête (dès 30 pers.)
+- Boîtes Corporatives" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl p-4 text-sm focus:outline-none focus:border-lucid-orange transition-colors"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: ACTIFS VISUELS & VIDÉOS -->
+        <div class="step-content" id="step3">
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-mono text-lucid-orange font-bold mb-2">
+            <i data-lucide="image" class="w-4 h-4"></i>
+            <span>Module 03</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-lucid mb-2">Actifs Médias, Photos & Liens Vidéos</h2>
+          <p class="text-xs text-lucid-graphite mb-8">Partagez vos liens Google Drive, Dropbox ou les liens directs de vos publications Facebook / TikTok.</p>
+
+          <div class="space-y-6">
+            <div>
+              <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Lien Google Drive / Dropbox des Photos & Logo HD</label>
+              <input type="url" id="driveLink" placeholder="https://drive.google.com/drive/folders/..." class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              <span class="text-[11px] text-lucid-graphite mt-1 block">Assurez-vous que l'accès au lien est défini sur « Tous les utilisateurs avec le lien ».</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Page Facebook Officielle</label>
+                <input type="text" id="facebookUrl" placeholder="https://facebook.com/JudoDouceurlakay" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Compte TikTok / Instagram</label>
+                <input type="text" id="tiktokUrl" placeholder="https://tiktok.com/@douceurslakay" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Liens vers vos meilleures vidéos (Sizzle / Cuisson / Buffets)</label>
+              <textarea id="videoLinks" rows="3" placeholder="Collez 1 à 3 liens de vos vidéos Facebook ou TikTok les plus appétissantes..." class="w-full bg-lucid-ivory border border-lucid-border rounded-xl p-4 text-sm focus:outline-none focus:border-lucid-orange transition-colors"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: LOGISTIQUE, ZONES & HORAIRES -->
+        <div class="step-content" id="step4">
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-mono text-lucid-orange font-bold mb-2">
+            <i data-lucide="map-pin" class="w-4 h-4"></i>
+            <span>Module 04</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-lucid mb-2">Logistique, Zones Desservies & Délais</h2>
+          <p class="text-xs text-lucid-graphite mb-8">Précisez les conditions de livraison et les heures pour les commandes du week-end.</p>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Villes & Régions Couvertes</label>
+                <input type="text" id="serviceZones" placeholder="ex: Ville de Québec, Lévis, Sainte-Foy, Gatineau" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Mode de Récupération</label>
+                <input type="text" id="deliveryModes" placeholder="ex: Livraison sur site événementiel & Ramassage disponible" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Préavis Minimum Requis</label>
+                <input type="text" id="leadTime" placeholder="ex: 24h d'avance (Commandes week-end) / 7 jours (Mariages)" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Créneaux de Service Tardifs</label>
+                <input type="text" id="weekendHours" placeholder="ex: Vendredi, Samedi & Dimanche jusqu'à tard" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: PAIEMENT & TRANSMISSION -->
+        <div class="step-content" id="step5">
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-mono text-lucid-orange font-bold mb-2">
+            <i data-lucide="check-circle" class="w-4 h-4"></i>
+            <span>Module 05</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-lucid mb-2">Validation, Contact & Finalisation</h2>
+          <p class="text-xs text-lucid-graphite mb-8">Vos canaux directs pour recevoir les commandes clients.</p>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Téléphone / WhatsApp d'affaires *</label>
+                <input type="tel" id="contactPhone" required placeholder="438-922-1961" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Courriel pour recevoir les soumissions *</label>
+                <input type="email" id="contactEmail" required placeholder="info@douceurslakay.com" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold font-mono uppercase tracking-mono text-lucid-carbon mb-2">Nom de Domaine Souhaité</label>
+              <input type="text" id="domainName" placeholder="douceurslakay.com" class="w-full bg-lucid-ivory border border-lucid-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-lucid-orange transition-colors">
+            </div>
+
+            <div class="p-6 rounded-2xl bg-lucid-surfaceMuted border border-lucid-border">
+              <div class="flex items-center gap-2 text-xs font-mono font-bold text-lucid-orange uppercase tracking-mono mb-2">
+                <i data-lucide="lock" class="w-4 h-4"></i>
+                <span>Garantie de Production Made Lucid</span>
+              </div>
+              <p class="text-xs text-lucid-graphite leading-relaxed">
+                Une fois ce formulaire transmis, votre maquette est intégrée sous 48h. Vous aurez une validation finale avant la bascule du domaine en production.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM CONTROLS -->
+        <div class="mt-10 pt-6 border-t border-lucid-border flex items-center justify-between gap-4">
+          <button type="button" id="prevBtn" onclick="handlePrev()" class="hidden px-6 py-3 rounded-full bg-lucid-surfaceMuted hover:bg-lucid-border text-lucid-carbon font-mono font-bold text-xs uppercase tracking-mono transition-all">
+            ← Étape Précédente
+          </button>
+          
+          <div class="flex items-center gap-3 ml-auto">
+            <button type="button" id="nextBtn" onclick="handleNext()" class="px-8 py-3.5 rounded-full bg-lucid-carbon hover:bg-lucid-orange text-white font-mono font-bold text-xs uppercase tracking-mono transition-all shadow-md">
+              Suivant →
+            </button>
+            <button type="button" id="submitBtn" onclick="finalizeSubmission()" class="hidden px-8 py-3.5 rounded-full bg-lucid-orange hover:bg-lucid-orangeHover text-white font-mono font-bold text-xs uppercase tracking-mono transition-all shadow-lg shadow-lucid-orange/20">
+              ⚡ Transmettre le Dossier à Made Lucid
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- SUCCESS MODAL / SCREEN -->
+      <div id="successScreen" class="hidden text-center py-12 space-y-6">
+        <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
+          <i data-lucide="check" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-3xl font-extrabold tracking-lucid text-lucid-carbon">Dossier Transmis avec Succès</h2>
+        <p class="text-sm text-lucid-graphite max-w-md mx-auto leading-relaxed">
+          Toutes les informations ont été enregistrées. Vous pouvez copier le récapitulatif ou le partager directement par WhatsApp.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <button onclick="copySummary()" class="w-full sm:w-auto px-6 py-3 rounded-full bg-lucid-surfaceMuted hover:bg-lucid-border text-lucid-carbon font-mono text-xs font-bold uppercase tracking-mono flex items-center justify-center gap-2">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+            <span>Copier le Récapitulatif</span>
+          </button>
+          <a id="whatsappShareBtn" href="#" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#1ebd59] text-white font-mono text-xs font-bold uppercase tracking-mono flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Ouvrir sur WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- SOVEREIGN FOOTER -->
+  <footer class="border-t border-lucid-border bg-lucid-ivory py-8 text-center text-xs font-mono text-lucid-graphite">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>MADE LUCID AGENCY // SOVEREIGN WEB ARCHITECTURE</div>
+      <div>MONTRÉAL • QUÉBEC • INTERNATIONAL</div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    lucide.createIcons();
+
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    function updateStepUI() {
+      // Hide all steps
+      document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+      
+      // Show current step
+      const currentEl = document.getElementById(`step${currentStep}`);
+      if (currentEl) currentEl.classList.add('active');
+
+      // Update progress bar
+      const percent = Math.round((currentStep / totalSteps) * 100);
+      document.getElementById('progressBar').style.width = `${percent}%`;
+      document.getElementById('progressPercent').innerText = `${percent}%`;
+
+      // Update label
+      const stepNames = [
+        'IDENTITÉ & VISION',
+        'MENUS, PLATS & TARIFS',
+        'ACTIFS VISUELS & VIDÉOS',
+        'LOGISTIQUE & HORAIRES',
+        'VALIDATION & TRANSMISSION'
+      ];
+      document.getElementById('stepIndicator').innerText = `ÉTAPE ${currentStep} SUR ${totalSteps} : ${stepNames[currentStep - 1]}`;
+
+      // Toggle buttons
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (currentStep === 1) {
+        prevBtn.classList.add('hidden');
+      } else {
+        prevBtn.classList.remove('hidden');
+      }
+
+      if (currentStep === totalSteps) {
+        nextBtn.classList.add('hidden');
+        submitBtn.classList.remove('hidden');
+      } else {
+        nextBtn.classList.remove('hidden');
+        submitBtn.classList.add('hidden');
+      }
+    }
+
+    function handleNext() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateStepUI();
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+      }
+    }
+
+    function handlePrev() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepUI();
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+      }
+    }
+
+    function prefillDouceursLakay() {
+      document.getElementById('brandName').value = "Douceurs Lakay";
+      document.getElementById('founderName').value = "Chef Jude";
+      document.getElementById('experienceYears').value = "Plus de 5 ans en traiteur & cuisine haïtienne";
+      document.getElementById('uniqueSecret').value = "Marinades créoles artisanales, cuisson lente du Lalo, Griot croustillant servi avec bananes pesées et pikliz relevé, Kremas onctueux fait maison.";
+      document.getElementById('hygieneCert').value = "Conforme aux normes de salubrité alimentaire MAPAQ.";
+      document.getElementById('menuDetails').value = "- Griot de Porc Doré (servi avec pikliz et bananes pesées) - Plat individuel ou grand plateau partage\n- Lalo d'Haïti Authentique aux viandes mijotées\n- Dinde Créole Assaisonnée au four\n- Plateau Fritay Festif (accras, marinades, saucisses créoles, bananes pesées)";
+      document.getElementById('drinksDesserts').value = "Kremas Artisanal (Bouteille 750ml), Kokiyol traditionnels croustillants, Pikliz en bocal.";
+      document.getElementById('cateringPackages').value = "1. Formule Cocktail & Fritay (5@7, lancements)\n2. Formule Grand Buffet Royal Créole (Mariages, Réceptions)\n3. Formule Événements Corporatifs (Boîtes repas chaudes)";
+      document.getElementById('facebookUrl').value = "https://facebook.com/JudoDouceurlakay";
+      document.getElementById('tiktokUrl').value = "https://tiktok.com/@douceurslakay";
+      document.getElementById('serviceZones').value = "Ville de Québec, Lévis, Sainte-Foy, Gatineau & Environs";
+      document.getElementById('deliveryModes').value = "Livraison directe sur site événementiel & Commande à emporter";
+      document.getElementById('leadTime').value = "24h à l'avance pour repas de week-end / 7 jours pour traiteur mariages & grands événements";
+      document.getElementById('weekendHours').value = "Vendredi soir, Samedi & Dimanche toute la journée (service tardif)";
+      document.getElementById('contactPhone').value = "438-922-1961";
+      document.getElementById('contactEmail').value = "info@douceurslakay.com";
+      document.getElementById('domainName').value = "douceurslakay.com";
+
+      alert("✨ Données de Douceurs Lakay pré-remplies avec succès !");
+    }
+
+    function finalizeSubmission() {
+      const data = {
+        brand: document.getElementById('brandName').value,
+        founder: document.getElementById('founderName').value,
+        secret: document.getElementById('uniqueSecret').value,
+        menu: document.getElementById('menuDetails').value,
+        facebook: document.getElementById('facebookUrl').value,
+        tiktok: document.getElementById('tiktokUrl').value,
+        zones: document.getElementById('serviceZones').value,
+        phone: document.getElementById('contactPhone').value,
+        email: document.getElementById('contactEmail').value,
+        domain: document.getElementById('domainName').value
+      };
+
+      // Generate WhatsApp link
+      const text = encodeURIComponent(`*DOSSIER CLIENT TRANSMIS // MADE LUCID*\n\n*Marque:* ${data.brand}\n*Chef:* ${data.founder}\n*Téléphone:* ${data.phone}\n*Courriel:* ${data.email}\n*Zone:* ${data.zones}\n*Facebook:* ${data.facebook}\n*Domaine:* ${data.domain}`);
+      document.getElementById('whatsappShareBtn').href = `https://wa.me/14389221961?text=${text}`;
+
+      document.getElementById('onboardingForm').classList.add('hidden');
+      document.getElementById('successScreen').classList.remove('hidden');
+      window.scrollTo({ top: 100, behavior: 'smooth' });
+    }
+
+    function copySummary() {
+      const summary = `DOSSIER D'ONBOARDING CLIENT - MADE LUCID\n--------------------------------------\nMarque: ${document.getElementById('brandName').value}\nFondateur: ${document.getElementById('founderName').value}\nTéléphone: ${document.getElementById('contactPhone').value}\nCourriel: ${document.getElementById('contactEmail').value}\nMenu: ${document.getElementById('menuDetails').value}\nZones: ${document.getElementById('serviceZones').value}`;
+      navigator.clipboard.writeText(summary).then(() => {
+        alert("📋 Récapitulatif copié dans votre presse-papiers !");
+      });
+    }
+  </script>
+</body>
+</html>
