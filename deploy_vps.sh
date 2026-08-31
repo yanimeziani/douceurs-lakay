@@ -1,26 +1,21 @@
 #!/usr/bin/env bash
-# Quick deploy script to sync Douceurs Lakay landing page to VPS
+# Deploy script to sync Douceurs Lakay landing page to VPS
 set -e
 
-VPS_IP="${1}"
+VPS_HOST="${1:-2.24.70.132}"
+SSH_KEY="${HOME}/.ssh/id_ed25519"
+TARGET_DIR="/docker/douceurs-lakay/html/"
 
-if [ -z "$VPS_IP" ]; then
-  echo "Usage: ./deploy_vps.sh <VPS_IP_OR_HOSTNAME>"
-  echo "Example: ./deploy_vps.sh 123.45.67.89"
-  exit 1
-fi
+echo "🚀 Deploying Douceurs Lakay to root@${VPS_HOST}:${TARGET_DIR}..."
 
-echo "🚀 Deploying Douceurs Lakay landing page to root@${VPS_IP}:/var/www/douceurs-lakay..."
-
-# Create directory on VPS
-ssh -o StrictHostKeyChecking=no "root@${VPS_IP}" "mkdir -p /var/www/douceurs-lakay"
-
-# Sync files (excluding env and git)
+# Sync files (excluding env, git, and caches)
 rsync -avz --delete \
+  -e "ssh -i ${SSH_KEY} -o StrictHostKeyChecking=accept-new" \
   --exclude '.env' \
   --exclude '.git' \
   --exclude 'facebook_videos' \
   --exclude '__pycache__' \
-  /Users/instant/Dev/douceurs-lakay/ "root@${VPS_IP}:/var/www/douceurs-lakay/"
+  --exclude '.DS_Store' \
+  /Users/instant/Dev/douceurs-lakay/ "root@${VPS_HOST}:${TARGET_DIR}"
 
-echo "✅ Deployment successful! Landing page is live on your VPS."
+echo "✅ Deployment successful! Douceurs Lakay is live on your VPS."
