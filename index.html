@@ -715,38 +715,40 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Nom & Prénom *</label>
-              <input type="text" required placeholder="ex: Jean Dupont" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
+              <input id="orderName" type="text" required placeholder="ex: Jean Dupont" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
             </div>
             <div>
               <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Téléphone *</label>
-              <input type="tel" required placeholder="ex: 418-555-0199" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
+              <input id="orderPhone" type="tel" required placeholder="ex: 418-555-0199" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Formule Souhaitée</label>
-              <select class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors font-sans">
-                <option>01 // COCKTAIL - Soirée Fritay & 5@7</option>
-                <option>02 // GRAND BUFFET - Le Banquet Royal</option>
-                <option>03 // CORPORATIF - Repas d'Entreprise</option>
-                <option>Plats à la carte (Griot, Lalo, Dinde)</option>
-                <option>Bouteilles de Kremas Maison</option>
+              <select id="orderFormula" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors font-sans">
+                <option value="01 // COCKTAIL - Soirée Fritay & 5@7">01 // COCKTAIL - Soirée Fritay & 5@7</option>
+                <option value="02 // GRAND BUFFET - Le Banquet Royal">02 // GRAND BUFFET - Le Banquet Royal</option>
+                <option value="03 // CORPORATIF - Repas d'Entreprise">03 // CORPORATIF - Repas d'Entreprise</option>
+                <option value="Côtes Levées BBQ Créoles & Grand Fritay">Côtes Levées BBQ Créoles & Grand Fritay</option>
+                <option value="Plats à la carte (Griot, Poisson, Poulet Frit, Bœuf)">Plats à la carte (Griot, Poisson, Poulet Frit, Bœuf)</option>
+                <option value="Bouteilles de Kremas Maison & Cocktails">Bouteilles de Kremas Maison & Cocktails</option>
               </select>
             </div>
             <div>
               <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Date de l'Événement</label>
-              <input type="date" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
+              <input id="orderDate" type="date" class="w-full bg-brand-bg border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors">
             </div>
           </div>
 
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">Détails & Nombre d'Invités</label>
-            <textarea rows="3" placeholder="Nombre de personnes, adresse de livraison à Québec ou Lévis, demandes particulières..." class="w-full bg-brand-bg border border-brand-border rounded-xl p-4 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors"></textarea>
+            <textarea id="orderDetails" rows="3" placeholder="Nombre de personnes, adresse de livraison à Québec ou Lévis, demandes particulières..." class="w-full bg-brand-bg border border-brand-border rounded-xl p-4 text-sm text-brand-dark focus:outline-none focus:border-brand-dark transition-colors"></textarea>
           </div>
 
-          <button type="submit" class="w-full py-4 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md shadow-brand-orange/20">
-            Transmettre ma Demande à Chef Jude
+          <button type="submit" class="w-full py-4 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md shadow-brand-orange/20 flex items-center justify-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Transmettre ma Demande à Chef Jude</span>
           </button>
 
         </form>
@@ -756,9 +758,18 @@
             <i data-lucide="check" class="w-7 h-7"></i>
           </div>
           <h3 class="text-2xl font-bold font-display text-brand-dark mb-1">Demande Transmise !</h3>
-          <p class="text-xs sm:text-sm text-brand-muted max-w-sm mx-auto">
-            Mèsi anpil ! Chef Jude vous recontactera rapidement par téléphone ou WhatsApp pour confirmer votre commande.
+          <p class="text-xs sm:text-sm text-brand-muted max-w-sm mx-auto mb-6">
+            Mèsi anpil ! Votre demande a été envoyée directement sur le WhatsApp de Chef Jude.
           </p>
+          <a 
+            id="waFallbackLink" 
+            href="#" 
+            target="_blank" 
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:bg-[#1EBE5D] transition-colors"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Ouvrir la conversation WhatsApp</span>
+          </a>
         </div>
 
       </div>
@@ -841,8 +852,22 @@
     }
 
     function handleOrderSubmit() {
+      const name = document.getElementById('orderName').value || 'Client';
+      const phone = document.getElementById('orderPhone').value || 'Non précisé';
+      const formula = document.getElementById('orderFormula').value;
+      const date = document.getElementById('orderDate').value || 'À déterminer';
+      const details = document.getElementById('orderDetails').value || 'Aucune note particulière';
+
+      const message = `Bonjour Chef Jude ! Nouvelle demande de soumission/réservation depuis douceurslakay.com :\n\n👤 Nom : ${name}\n📞 Téléphone : ${phone}\n🍽️ Formule : ${formula}\n📅 Date souhaitée : ${date}\n📝 Détails & Invités : ${details}`;
+      const waUrl = `https://wa.me/14389221961?text=${encodeURIComponent(message)}`;
+
+      // Hide form & show confirmation
       document.getElementById('orderForm').classList.add('hidden');
       document.getElementById('orderSuccess').classList.remove('hidden');
+      document.getElementById('waFallbackLink').href = waUrl;
+
+      // Automatically open WhatsApp with pre-filled message
+      window.open(waUrl, '_blank');
     }
   </script>
 </body>
