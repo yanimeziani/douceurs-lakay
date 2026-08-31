@@ -20,7 +20,7 @@ CATERING_WEDDING_30S_BRIEF = (
     "@Image1 is used for the grand catering feast with golden Griot, slow-simmered Lalo, and crispy plantains; do not use the background. "
     "【Event Script & Dialogue】 "
     "[0-8s - The Wedding Tasting Hook]: Camera opens on a warm, elegant banquet room with soft candlelit tables. "
-    "Nathalie looks at the menu with anticipation: {Nathalie: \"Pour notre mariage de 150 personnes... je voulais le vrai goût de chez nous, digne d'un grand banquet.\"} "
+    "Nathalie looks at the menu with anticipation: {Nathalie: \"Pour notre mariage de 150 personnes... je voulais la saveur de chez nous, digne d'un grand banquet.\"} "
     "Jean-Marc smiles proudly as steaming stainless steel chafing dishes are uncovered, revealing the lavish feast from @Image1. <sound: lid opening, rich savory steam release hiss> "
     "[8-18s - The Taste of Home & Culinary Mastery]: Jean-Marc takes a forkful of tender braised meat and fragrant rice: "
     "{Jean-Marc: \"Nathalie, goûte à ça... C'est exactement comme à la maison. Les épices, la tendreté, tout est parfait.\"} "
