@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr" class="bg-[#0A0B0E] text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café Ancestral 3D | WebGL & Three.js Photo-Réaliste</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Three.js + OrbitControls + PostProcessing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+    #webgl-canvas { width: 100%; height: 100%; display: block; }
+    .glass-ui {
+      background: rgba(15, 18, 26, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+  </style>
+</head>
+<body class="bg-[#07080A] text-slate-100 font-sans select-none">
+
+  <!-- 3D WEBGL CANVAS -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- FLOATING HUD OVERLAY -->
+  <div class="fixed top-6 left-6 z-20 glass-ui rounded-3xl p-5 max-w-sm shadow-2xl border border-white/10">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-3 h-3 rounded-full bg-amber-400 animate-ping"></div>
+      <h1 class="font-extrabold text-base tracking-tight text-white font-['Outfit']">CAFÉ ANCESTRAL // 3D WEBGL</h1>
+    </div>
+    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+      Scène 3D temps réel : Humain buvant sa bière, cadres anciens, miroirs réflectifs, plafond d'époque & Étage 2 botanique (arbres et feuillage photo-réaliste).
+    </p>
+
+    <div class="flex items-center gap-2 font-mono text-[11px]">
+      <button onclick="setCameraView('floor1')" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold uppercase transition-colors">
+        Étage 1 (Café & Bière)
+      </button>
+      <button onclick="setCameraView('floor2')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold uppercase transition-colors">
+        Étage 2 (Arbres)
+      </button>
+      <button onclick="setCameraView('overview')" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold uppercase transition-colors">
+        Vue Globale
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTTOM CONTROLS HINT -->
+  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-20 glass-ui px-5 py-2.5 rounded-full text-xs font-mono text-slate-300 flex items-center gap-4 shadow-xl">
+    <span>🖱️ <strong>Clic gauche + glisser :</strong> Rotation 360°</span>
+    <span class="text-white/20">|</span>
+    <span>🔍 <strong>Molette :</strong> Zoom</span>
+    <span class="text-white/20">|</span>
+    <span>✨ <strong>Clic droit :</strong> Déplacement</span>
+  </div>
+
+  <!-- JAVASCRIPT THREE.JS SCENE BUILDER -->
+  <script>
+    lucide.createIcons();
+
+    // 1. SCENE & RENDERER SETUP
+    const canvas = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x06080C);
+    scene.fog = new THREE.FogExp2(0x06080C, 0.025);
+
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 3, 9);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance" });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.maxPolarAngle = Math.PI / 2 + 0.05;
+    controls.minDistance = 2;
+    controls.maxDistance = 25;
+    controls.target.set(0, 2, 0);
+
+    // 2. PROCEDURAL TEXTURES (WOOD, BRICK, MIRROR)
+    function createWoodTexture() {
+      const c = document.createElement('canvas');
+      c.width = 512; c.height = 512;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#2A1810';
+      ctx.fillRect(0, 0, 512, 512);
+      ctx.fillStyle = 'rgba(0,0,0,0.15)';
+      for (let i = 0; i < 512; i += 4) {
+        ctx.fillRect(0, i, 512, 2);
+      }
+      return new THREE.CanvasTexture(c);
+    }
+
+    function createWallpaperTexture() {
+      const c = document.createElement('canvas');
+      c.width = 512; c.height = 512;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#1A1D24';
+      ctx.fillRect(0, 0, 512, 512);
+      ctx.strokeStyle = '#2B303C';
+      ctx.lineWidth = 4;
+      for (let x = 0; x < 512; x += 64) {
+        for (let y = 0; y < 512; y += 64) {
+          ctx.strokeRect(x + 8, y + 8, 48, 48);
+        }
+      }
+      return new THREE.CanvasTexture(c);
+    }
+
+    const woodTex = createWoodTexture();
+    const wallpaperTex = createWallpaperTexture();
+
+    // 3. LIGHTING (WARM EDISON GLOW & MOONBEAMS)
+    const ambientLight = new THREE.AmbientLight(0xffeedd, 0.4);
+    scene.add(ambientLight);
+
+    // Floor 1 Warm Chandelier
+    const warmPendant = new THREE.PointLight(0xffaa44, 2.5, 12, 1.2);
+    warmPendant.position.set(0, 3.8, 0);
+    warmPendant.castShadow = true;
+    warmPendant.shadow.mapSize.width = 1024;
+    warmPendant.shadow.mapSize.height = 1024;
+    scene.add(warmPendant);
+
+    // Chandelier Bulb Mesh
+    const bulbGeo = new THREE.SphereGeometry(0.12, 16, 16);
+    const bulbMat = new THREE.MeshBasicMaterial({ color: 0xffcc77 });
+    const bulb = new THREE.Mesh(bulbGeo, bulbMat);
+    bulb.position.copy(warmPendant.position);
+    scene.add(bulb);
+
+    // Floor 2 Moonbeam / Sunbeam for Trees
+    const sunbeam = new THREE.DirectionalLight(0xddf0ff, 1.8);
+    sunbeam.position.set(5, 12, 6);
+    sunbeam.castShadow = true;
+    scene.add(sunbeam);
+
+    // 4. ARCHITECTURE: FLOOR 1 (ANCESTRAL CAFÉ)
+    const roomSize = 12;
+    const floorHeight = 4.5;
+
+    // Floor 1 Ground (Polished Dark Wood)
+    const floor1Geo = new THREE.PlaneGeometry(roomSize, roomSize);
+    const floor1Mat = new THREE.MeshStandardMaterial({ 
+      map: woodTex, 
+      roughness: 0.25, 
+      metalness: 0.1 
+    });
+    const floor1 = new THREE.Mesh(floor1Geo, floor1Mat);
+    floor1.rotation.x = -Math.PI / 2;
+    floor1.receiveShadow = true;
+    scene.add(floor1);
+
+    // Back Wall
+    const backWallGeo = new THREE.PlaneGeometry(roomSize, floorHeight * 2);
+    const backWallMat = new THREE.MeshStandardMaterial({ 
+      map: wallpaperTex, 
+      roughness: 0.8 
+    });
+    const backWall = new THREE.Mesh(backWallGeo, backWallMat);
+    backWall.position.set(0, floorHeight, -roomSize / 2);
+    backWall.receiveShadow = true;
+    scene.add(backWall);
+
+    // Left Wall
+    const leftWall = new THREE.Mesh(backWallGeo, backWallMat);
+    leftWall.position.set(-roomSize / 2, floorHeight, 0);
+    leftWall.rotation.y = Math.PI / 2;
+    leftWall.receiveShadow = true;
+    scene.add(leftWall);
+
+    // 5. ANCESTRAL ORNAMENTS: FRAMES, MIRRORS & CAMERAS
+    
+    // Antique Gold Picture Frames on Wall
+    function createPictureFrame(x, y, z, rotY, imgColor) {
+      const group = new THREE.Group();
+      // Outer Frame
+      const frameGeo = new THREE.BoxGeometry(1.6, 2.2, 0.08);
+      const frameMat = new THREE.MeshStandardMaterial({ color: 0xC59A3F, metalness: 0.8, roughness: 0.3 });
+      const frame = new THREE.Mesh(frameGeo, frameMat);
+      group.add(frame);
+
+      // Inner Canvas Art
+      const artGeo = new THREE.PlaneGeometry(1.3, 1.9);
+      const artMat = new THREE.MeshStandardMaterial({ color: imgColor, roughness: 0.6 });
+      const art = new THREE.Mesh(artGeo, artMat);
+      art.position.z = 0.05;
+      group.add(art);
+
+      group.position.set(x, y, z);
+      group.rotation.y = rotY;
+      scene.add(group);
+    }
+
+    createPictureFrame(-2.5, 2.8, -roomSize / 2 + 0.05, 0, 0x4A2E18); // Frame 1
+    createPictureFrame(2.5, 2.8, -roomSize / 2 + 0.05, 0, 0x1E3A34);  // Frame 2
+
+    // Vintage Gilded Mirror (Reflective)
+    const mirrorGroup = new THREE.Group();
+    const mirrorFrameGeo = new THREE.BoxGeometry(2.2, 3.2, 0.1);
+    const mirrorFrameMat = new THREE.MeshStandardMaterial({ color: 0xE5A93C, metalness: 0.9, roughness: 0.2 });
+    const mirrorFrame = new THREE.Mesh(mirrorFrameGeo, mirrorFrameMat);
+    mirrorGroup.add(mirrorFrame);
+
+    const mirrorGlassGeo = new THREE.PlaneGeometry(1.9, 2.9);
+    const mirrorGlassMat = new THREE.MeshStandardMaterial({ 
+      color: 0xEEEEFF, 
+      metalness: 0.95, 
+      roughness: 0.05 
+    });
+    const mirrorGlass = new THREE.Mesh(mirrorGlassGeo, mirrorGlassMat);
+    mirrorGlass.position.z = 0.06;
+    mirrorGroup.add(mirrorGlass);
+
+    mirrorGroup.position.set(-roomSize / 2 + 0.06, 2.6, -1);
+    mirrorGroup.rotation.y = Math.PI / 2;
+    scene.add(mirrorGroup);
+
+    // Vintage Camera Prop on Wall/Tripod
+    const cameraProp = new THREE.Group();
+    const camBody = new THREE.Mesh(
+      new THREE.BoxGeometry(0.5, 0.4, 0.6),
+      new THREE.MeshStandardMaterial({ color: 0x1A1A1A, metalness: 0.7, roughness: 0.4 })
+    );
+    const camLens = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.18, 0.18, 0.3, 16),
+      new THREE.MeshStandardMaterial({ color: 0x333333, metalness: 0.9, roughness: 0.1 })
+    );
+    camLens.rotation.x = Math.PI / 2;
+    camLens.position.z = 0.4;
+    cameraProp.add(camBody, camLens);
+    cameraProp.position.set(4, 3.2, -roomSize / 2 + 0.4);
+    scene.add(cameraProp);
+
+    // 6. CHARACTER DRINKING BEER AT BISTRO TABLE
+    const tableGroup = new THREE.Group();
+    
+    // Wooden Bistro Table
+    const tableTop = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.2, 1.2, 0.08, 32),
+      new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.3 })
+    );
+    tableTop.position.y = 1.4;
+    tableTop.castShadow = true;
+    tableTop.receiveShadow = true;
+    
+    const tableLeg = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.08, 0.08, 1.4, 16),
+      new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.8, roughness: 0.2 })
+    );
+    tableLeg.position.y = 0.7;
+    tableGroup.add(tableTop, tableLeg);
+    scene.add(tableGroup);
+
+    // Vector-shaded Stylized Human Figure
+    const humanGroup = new THREE.Group();
+    const skinMat = new THREE.MeshStandardMaterial({ color: 0xD4A373, roughness: 0.5 });
+    const clothesMat = new THREE.MeshStandardMaterial({ color: 0x243242, roughness: 0.7 });
+
+    // Torso
+    const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.4, 1.0, 16), clothesMat);
+    torso.position.set(0, 1.5, 1.2);
+    humanGroup.add(torso);
+
+    // Head
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.24, 16, 16), skinMat);
+    head.position.set(0, 2.2, 1.2);
+    humanGroup.add(head);
+
+    // Arm Raising Beer Mug
+    const armGeo = new THREE.CylinderGeometry(0.09, 0.09, 0.6, 12);
+    const arm = new THREE.Mesh(armGeo, clothesMat);
+    arm.position.set(0.3, 1.6, 0.8);
+    arm.rotation.x = Math.PI / 4;
+    arm.rotation.z = -Math.PI / 6;
+    humanGroup.add(arm);
+
+    // Amber Beer Glass & Foam
+    const beerGlassGroup = new THREE.Group();
+    const glassMug = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.12, 0.1, 0.35, 16),
+      new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.4,
+        roughness: 0.05,
+        transmission: 0.9,
+        ior: 1.5
+      })
+    );
+    const beerLiquid = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.11, 0.09, 0.3, 16),
+      new THREE.MeshStandardMaterial({ color: 0xE8A317, roughness: 0.1, metalness: 0.2 })
+    );
+    beerLiquid.position.y = -0.02;
+
+    const beerFoam = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.12, 0.12, 0.08, 16),
+      new THREE.MeshStandardMaterial({ color: 0xFFFFF0, roughness: 0.8 })
+    );
+    beerFoam.position.y = 0.16;
+
+    beerGlassGroup.add(glassMug, beerLiquid, beerFoam);
+    beerGlassGroup.position.set(0.35, 1.85, 0.6);
+    humanGroup.add(beerGlassGroup);
+
+    scene.add(humanGroup);
+
+    // 7. ÉTAGE NUMÉRO 2 (MEZZANINE WITH TREES & FOLIAGE)
+    const floor2Height = 4.8;
+    
+    // Mezzanine Floor with Balcony Opening
+    const mezzanineGeo = new THREE.PlaneGeometry(roomSize, roomSize);
+    const mezzanineMat = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.3 });
+    const mezzanine = new THREE.Mesh(mezzanineGeo, mezzanineMat);
+    mezzanine.position.set(0, floor2Height, 0);
+    mezzanine.rotation.x = -Math.PI / 2;
+    mezzanine.receiveShadow = true;
+    scene.add(mezzanine);
+
+    // Ceilings (Coffered Wood)
+    const ceilingGeo = new THREE.PlaneGeometry(roomSize, roomSize);
+    const ceilingMat = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.6 });
+    const ceiling = new THREE.Mesh(ceilingGeo, ceilingMat);
+    ceiling.position.set(0, floor2Height * 2, 0);
+    ceiling.rotation.x = Math.PI / 2;
+    scene.add(ceiling);
+
+    // Photo-realistic Foliage Trees on Floor 2
+    const foliageGroup = new THREE.Group();
+    
+    function createPhotoTree(x, z) {
+      const tree = new THREE.Group();
+      
+      // Trunk
+      const trunkGeo = new THREE.CylinderGeometry(0.15, 0.25, 2.5, 8);
+      const trunkMat = new THREE.MeshStandardMaterial({ color: 0x3E2723, roughness: 0.9 });
+      const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+      trunk.position.y = 1.25;
+      trunk.castShadow = true;
+      tree.add(trunk);
+
+      // Realistic Layered Leaf Canopy
+      const leafMat = new THREE.MeshStandardMaterial({ 
+        color: 0x2E7D32, 
+        roughness: 0.4, 
+        metalness: 0.1,
+        flatShading: false
+      });
+
+      for (let i = 0; i < 5; i++) {
+        const leafSphere = new THREE.Mesh(
+          new THREE.DodecahedronGeometry(0.9 - i * 0.12, 1),
+          leafMat
+        );
+        leafSphere.position.set(
+          (Math.random() - 0.5) * 0.6,
+          2.0 + i * 0.5,
+          (Math.random() - 0.5) * 0.6
+        );
+        leafSphere.castShadow = true;
+        tree.add(leafSphere);
+      }
+
+      tree.position.set(x, floor2Height, z);
+      return tree;
+    }
+
+    // Add trees on Level 2
+    foliageGroup.add(createPhotoTree(-2.5, -2.5));
+    foliageGroup.add(createPhotoTree(2.5, -2.5));
+    foliageGroup.add(createPhotoTree(0, -3.5));
+    foliageGroup.add(createPhotoTree(-3, 1));
+    scene.add(foliageGroup);
+
+    // 8. DUST MOTES / ATMOSPHERIC PARTICLES
+    const particleCount = 150;
+    const particleGeo = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      particlePositions[i] = (Math.random() - 0.5) * roomSize;
+      particlePositions[i+1] = Math.random() * floor2Height * 2;
+      particlePositions[i+2] = (Math.random() - 0.5) * roomSize;
+    }
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: 0xFFD88A,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.6
+    });
+    const dustParticles = new THREE.Points(particleGeo, particleMat);
+    scene.add(dustParticles);
+
+    // 9. ANIMATION LOOP (BEER RAISING & WIND LEAVES)
+    let clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const time = clock.getElapsedTime();
+
+      // Subtle breathing & drinking motion
+      beerGlassGroup.position.y = 1.85 + Math.sin(time * 2) * 0.04;
+      head.rotation.x = Math.sin(time * 2) * 0.05;
+
+      // Tree foliage swaying in the breeze
+      foliageGroup.children.forEach((tree, idx) => {
+        tree.rotation.z = Math.sin(time * 1.5 + idx) * 0.02;
+        tree.rotation.x = Math.cos(time * 1.2 + idx) * 0.02;
+      });
+
+      // Dust motes floating
+      dustParticles.rotation.y = time * 0.02;
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // 10. RESIZE HANDLER
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // 11. CAMERA VIEWS NAVIGATION
+    window.setCameraView = function(view) {
+      if (view === 'floor1') {
+        controls.target.set(0, 1.8, 0);
+        camera.position.set(0, 2.5, 4.5);
+      } else if (view === 'floor2') {
+        controls.target.set(0, floor2Height + 1.8, -1.5);
+        camera.position.set(0, floor2Height + 3, 4.5);
+      } else {
+        controls.target.set(0, 4, 0);
+        camera.position.set(6, 7, 10);
+      }
+    };
+  </script>
+</body>
+</html>
