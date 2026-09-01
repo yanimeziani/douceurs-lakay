@@ -348,77 +348,136 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
         
         <!-- 01 // COCKTAIL -->
         <div class="bento-card p-7 sm:p-8 flex flex-col justify-between">
           <div>
-            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-muted block mb-1">01 // COCKTAIL</span>
-            <h3 class="text-2xl font-bold font-display text-brand-dark mb-3">Soirée Fritay & 5@7</h3>
-            <p class="text-xs sm:text-sm text-brand-body leading-relaxed mb-6">
-              Plateaux chauds de bouchées et finger food créole pour vos réunions d'amis et lancements.
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-muted">01 // COCKTAIL</span>
+              <span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full bg-brand-bgAlt text-brand-dark border border-brand-border">5@7 & Fêtes</span>
+            </div>
+            <h3 class="text-2xl font-bold font-display text-brand-dark mb-2">Soirée Fritay & 5@7</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">
+              Plateaux chauds de bouchées & finger food créole pour vos 5@7, réceptions d'amis et lancements.
             </p>
-            <div class="space-y-2.5 text-xs text-brand-dark mb-8 border-t border-brand-border pt-4">
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
-                <span>Accras croustillants & marinades</span>
+
+            <!-- MENU DÉTAILLÉ DU SERVICE -->
+            <div class="space-y-4 text-xs border-t border-brand-border pt-4 mb-6">
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange block mb-1.5">Au Menu • Bouchées Chaudes</span>
+                <ul class="space-y-1.5 text-brand-dark">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Griot croustillant</strong> & marinades salées</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Akras traditionnels</strong> de malanga râpé</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Bananes pesées</strong> croustillantes</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Bouchées de crevettes</strong> & corbeilles plantain</span>
+                  </li>
+                </ul>
               </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
-                <span>Bouchées de Griot & Pikliz</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
-                <span>Bananes pesées dorées</span>
+
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-dark block mb-1.5">Accompagnements & Douceur</span>
+                <ul class="space-y-1.5 text-brand-body">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span>Pikliz maison piquant & salade russe</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span>Kokiyòl artisanal (banane & cannelle)</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20souhaite%20r%C3%A9server%20la%20formule%2001%20//%20Cocktail%20Soir%C3%A9e%20Fritay%20%26%205%407" 
             target="_blank"
-            class="w-full py-3 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2"
+            class="w-full py-3 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2 mt-2"
           >
-            <span>Réserver Cocktail</span>
+            <span>Réserver Formule Cocktail</span>
             <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
           </a>
         </div>
 
         <!-- 02 // GRAND BUFFET (FEATURED PRESTIGE) -->
-        <div class="bento-card p-7 sm:p-8 flex flex-col justify-between border-2 border-brand-orange relative shadow-xl">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-orange text-white px-3.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider font-mono">
+        <div class="bento-card p-7 sm:p-8 flex flex-col justify-between border-2 border-brand-orange relative shadow-xl bg-orange-50/20">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-orange text-white px-3.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider font-mono shadow-sm">
             PRESTIGE & MARIAGES
           </div>
           <div>
-            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-orange block mb-1 mt-1">02 // GRAND BUFFET</span>
-            <h3 class="text-2xl font-bold font-display text-brand-dark mb-3">Le Banquet Royal</h3>
-            <p class="text-xs sm:text-sm text-brand-body leading-relaxed mb-6">
-              Le grand festin créole pour mariages, baptêmes et célébrations familiales inoubliables.
+            <div class="flex items-center justify-between mb-1 mt-1">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-orange">02 // GRAND BUFFET</span>
+              <span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full bg-orange-100 text-brand-orange border border-orange-200">Prestige</span>
+            </div>
+            <h3 class="text-2xl font-bold font-display text-brand-dark mb-2">Le Banquet Royal</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">
+              Le grand festin créole complet pour mariages, baptêmes, anniversaires et banquets à Québec.
             </p>
-            <div class="space-y-2.5 text-xs text-brand-dark mb-8 border-t border-brand-border pt-4">
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
-                <span class="font-semibold">Griot doré & Dinde assaisonnée</span>
+
+            <!-- MENU DÉTAILLÉ DU SERVICE -->
+            <div class="space-y-4 text-xs border-t border-brand-border pt-4 mb-6">
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange block mb-1.5">Plats & Viandes au Choix</span>
+                <ul class="space-y-1.5 text-brand-dark">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Griot royal</strong> & Dinde créole au four</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Poulet nan sòs / frit</strong> ou Bœuf sauté (Tassot)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Poisson braisé</strong> ou Saumon rôti aux épis</span>
+                  </li>
+                </ul>
               </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
-                <span>Riz Diri Djon Djon ou Riz collé</span>
+
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange block mb-1.5">Riz, Gratins & Sauces</span>
+                <ul class="space-y-1.5 text-brand-body">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span><strong>Riz noir Djon-Djon</strong> & Riz collé aux pois</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span>Macaroni gratiné haïtien & bananes pesées</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange shrink-0 mt-0.5"></i>
+                    <span>Sauce pois noirs, pikliz & salade russe créole</span>
+                  </li>
+                </ul>
               </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
-                <span>Salade russe, sauce pois & pikliz</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-orange"></i>
-                <span class="font-bold text-brand-orange">Dégustation de Kremas offerte</span>
+
+              <div class="bg-brand-dark text-white rounded-xl p-3 text-[11px] flex items-center gap-2.5 shadow-sm">
+                <i data-lucide="gift" class="w-4 h-4 text-brand-orange shrink-0"></i>
+                <span><strong>Inclus :</strong> Dégustation de Kremas & Kokiyòl artisanaux pour vos convives</span>
               </div>
             </div>
           </div>
+
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20souhaite%20r%C3%A9server%20la%20formule%2002%20//%20Le%20Banquet%20Royal%20(Prestige%20%26%20Mariages)" 
             target="_blank"
-            class="w-full py-3.5 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-md flex items-center justify-center gap-2"
+            class="w-full py-3.5 rounded-full bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-md flex items-center justify-center gap-2 mt-2"
           >
-            <span>Réserver ce Banquet</span>
+            <span>Réserver ce Banquet Royal</span>
             <i data-lucide="message-circle" class="w-4 h-4"></i>
           </a>
         </div>
@@ -426,32 +485,65 @@
         <!-- 03 // CORPORATIF -->
         <div class="bento-card p-7 sm:p-8 flex flex-col justify-between">
           <div>
-            <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-muted block mb-1">03 // CORPORATIF</span>
-            <h3 class="text-2xl font-bold font-display text-brand-dark mb-3">Repas d'Entreprise</h3>
-            <p class="text-xs sm:text-sm text-brand-body leading-relaxed mb-6">
-              Boîtes repas chaudes et scellées ou buffet chaud livré sur site pour vos réunions d'affaires.
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-muted">03 // CORPORATIF</span>
+              <span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full bg-brand-bgAlt text-brand-dark border border-brand-border">Entreprises</span>
+            </div>
+            <h3 class="text-2xl font-bold font-display text-brand-dark mb-2">Repas d'Entreprise</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">
+              Boîtes repas chaudes individuelles scellées ou buffet chaud livré sur site pour vos réunions d'affaires.
             </p>
-            <div class="space-y-2.5 text-xs text-brand-dark mb-8 border-t border-brand-border pt-4">
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
-                <span>Boîtes repas individuelles prêtes</span>
+
+            <!-- MENU DÉTAILLÉ DU SERVICE -->
+            <div class="space-y-4 text-xs border-t border-brand-border pt-4 mb-6">
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange block mb-1.5">Au Menu • Assiettes & Boîtes Repas</span>
+                <ul class="space-y-1.5 text-brand-dark">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span><strong>Choix de viande chaude :</strong> Griot, Poulet créole ou Dinde rôtie</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span><strong>Accompagnement :</strong> Riz Djon-Djon ou Riz collé + Banane pesée</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span>Salade fraîcheur du jour, sauce & pikliz maison</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span>Dessert individuel ou Kokiyòl artisanal</span>
+                  </li>
+                </ul>
               </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
-                <span>Facturation d'entreprise claire</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
-                <span>Livraison ponctuelle garantie</span>
+
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-dark block mb-1.5">Garanties Corporatives</span>
+                <ul class="space-y-1.5 text-brand-body">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span>Boîtes individuelles prêtes et étiquetées</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span>Facturation corporative claire avec taxes</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-brand-green shrink-0 mt-0.5"></i>
+                    <span>Livraison ponctuelle garantie sur votre lieu de travail</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+
           <a 
             href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20souhaite%20une%20soumission%20pour%20la%20formule%2003%20//%20Corporatif%20Repas%20d%27Entreprise" 
             target="_blank"
-            class="w-full py-3 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2"
+            class="w-full py-3 rounded-full bg-brand-bgAlt hover:bg-brand-dark hover:text-white text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2 mt-2"
           >
-            <span>Soumission Entreprise</span>
+            <span>Demander Soumission Entreprise</span>
             <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
           </a>
         </div>
