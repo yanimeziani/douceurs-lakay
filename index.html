@@ -111,6 +111,7 @@
       <!-- NAV LINKS -->
       <nav class="hidden md:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-brand-muted">
         <a href="#specialites" class="hover:text-brand-dark transition-colors">Spécialités</a>
+        <a href="#galerie" class="hover:text-brand-dark transition-colors">Galerie</a>
         <a href="#traiteur" class="hover:text-brand-dark transition-colors">Traiteur</a>
         <a href="#chef" class="hover:text-brand-dark transition-colors">Chef Jude</a>
         <a href="#avis" class="hover:text-brand-dark transition-colors">Avis</a>
@@ -142,6 +143,7 @@
     <!-- MOBILE DROPDOWN -->
     <div id="mobileMenu" class="hidden md:hidden mt-2 bg-white rounded-3xl p-6 border border-brand-border shadow-xl space-y-3">
       <a href="#specialites" class="block font-bold text-sm text-brand-dark py-1">Nos Spécialités Vedettes</a>
+      <a href="#galerie" class="block font-bold text-sm text-brand-dark py-1">Galerie Photos</a>
       <a href="#traiteur" class="block font-bold text-sm text-brand-dark py-1">Formules Traiteur</a>
       <a href="#chef" class="block font-bold text-sm text-brand-dark py-1">L'Artisan Chef Jude</a>
       <a href="#avis" class="block font-bold text-sm text-brand-dark py-1">Avis Clients</a>
@@ -329,6 +331,309 @@
           <i data-lucide="download" class="w-3.5 h-3.5 text-brand-orange"></i>
           <span>Télécharger le Menu PDF</span>
         </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IMAGE CAROUSEL SECTION -->
+  <section id="galerie" class="py-20 bg-white border-y border-brand-border overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
+      
+      <!-- Section Header with Controls -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-orange block mb-2 font-mono">Galerie Visuelle</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-brand-dark mb-2">
+            La Table de Chef Jude en Images
+          </h2>
+          <p class="text-xs sm:text-sm text-brand-muted max-w-xl">
+            Aperçu de nos bouchées traiteur, plateaux chauds, cocktails tropicaux et douceurs préparés avec passion.
+          </p>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="flex items-center gap-2 shrink-0">
+          <button 
+            id="carouselPrevBtn" 
+            class="w-11 h-11 rounded-full border border-brand-border hover:border-brand-dark bg-white hover:bg-brand-dark text-brand-dark hover:text-white transition-all flex items-center justify-center shadow-sm"
+            aria-label="Image précédente"
+          >
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+          <button 
+            id="carouselNextBtn" 
+            class="w-11 h-11 rounded-full border border-brand-border hover:border-brand-dark bg-white hover:bg-brand-dark text-brand-dark hover:text-white transition-all flex items-center justify-center shadow-sm"
+            aria-label="Image suivante"
+          >
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel Track Container -->
+      <div class="relative">
+        <div 
+          id="carouselTrack" 
+          class="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          
+          <!-- Slide 1: Corbeilles de Plantain & Crevettes -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/corbeilles_crevettes.jpg" 
+                alt="Corbeilles de Banane Plantain & Crevettes" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-brand-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Cocktail & 5@7
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Corbeilles de Plantain & Crevettes
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Corbeilles croustillantes de banane plantain garnies de salade russe onctueuse et crevettes grillées.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20les%20Corbeilles%20de%20Plantain%20%26%20Crevettes%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Commander ce plateau</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 2: Cocktails Tropicaux -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/cocktails_tropicaux.jpg" 
+                alt="Cocktails Tropicaux Maison" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-brand-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Bar & Cocktails
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Cocktails Tropicaux Maison
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Cocktails artisanaux frais pressés à l'ananas, melon d'eau, goyave et passion, avec ou sans alcool.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20les%20Cocktails%20Tropicaux%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Commander les Cocktails</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 3: Griot & Grand Fritay -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/griot.jpg" 
+                alt="Griot & Grand Fritay" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Plat Vedette
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Griot & Grand Fritay
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Griot croustillant mariné 24h aux agrumes, bananes pesées dorées, akras de malanga et pikliz.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20le%20Griot%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Commander du Griot</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 4: Dégustation Royale Douceurs Lakay -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/douceurs_tasting_set.jpeg" 
+                alt="Dégustation Royale Douceurs Lakay" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-brand-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Prestige
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Plateau Dégustation Traiteur
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Assortiment prestige de bouchées raffinées pour réceptions privées, mariages et événements corporatifs.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20souhaite%20une%20d%C3%A9gustation%20traiteur%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Demander Devis Traiteur</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 5: Dinde Créole au Four -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/dinde.jpg" 
+                alt="Dinde Créole au Four" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-brand-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Banquets
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Dinde Créole au Four
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Dinde marinée aux herbes antillaises, rôtie jusqu'à être dorée et croustillante, servie avec bananes pesées.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20la%20Dinde%20Cr%C3%A9ole%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Commander la Dinde</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 6: Kokiyòl Fait Maison -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/kokiyol.jpeg" 
+                alt="Kokiyòl Fait Maison" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Fait Maison
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Kokiyòl Artisanal
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Beignets traditionnels haïtiens à la figue banane, cannelle, muscade, gingembre et zeste de citron.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20des%20Kokiy%C3%B2l%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Commander des Kokiyòl</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 7: Kremas Artisanal 750ml -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/kremas_bottle.jpeg" 
+                alt="Kremas Artisanal 750ml" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-brand-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Bouteille 750ml
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Kremas Artisanal
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Liqueur onctueuse haïtienne à la noix de coco, vanille, cannelle, muscade et rhum des Caraïbes.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20une%20bouteille%20de%20Kremas%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Commander une Bouteille</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 8: Côtes Levées BBQ -->
+          <div class="carousel-slide flex-none w-[82vw] sm:w-[380px] snap-start bento-card overflow-hidden group">
+            <div class="aspect-[4/3] bg-brand-bgAlt overflow-hidden relative">
+              <img 
+                src="./assets/ribs_bbq_fritay.jpg" 
+                alt="Côtes Levées BBQ Créoles" 
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3.5 right-3.5 bg-brand-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                BBQ Signature
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base sm:text-lg font-bold font-display text-brand-dark mb-1 group-hover:text-brand-orange transition-colors">
+                Côtes Levées BBQ Créoles
+              </h3>
+              <p class="text-xs text-brand-muted line-clamp-2 mb-3">
+                Côtes levées caramélisées aux épices antillaises et sauce fumée maison, servies avec bananes pesées.
+              </p>
+              <a 
+                href="https://wa.me/14389221961?text=Bonjour%20Chef%20Jude,%20je%20veux%20commander%20les%20C%C3%B4tes%20Lev%C3%A9es%20BBQ%20!" 
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider"
+              >
+                <span>Commander ce plateau</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Indicators Dots -->
+        <div id="carouselDots" class="flex items-center justify-center gap-2 mt-6">
+          <!-- Dots generated in JS -->
+        </div>
+
       </div>
 
     </div>
@@ -732,6 +1037,78 @@
   <!-- SCRIPTS -->
   <script>
     lucide.createIcons();
+
+    // --- CAROUSEL LOGIC ---
+    const carouselTrack = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('carouselPrevBtn');
+    const nextBtn = document.getElementById('carouselNextBtn');
+    const dotsContainer = document.getElementById('carouselDots');
+
+    if (carouselTrack && prevBtn && nextBtn && dotsContainer) {
+      const slides = carouselTrack.querySelectorAll('.carousel-slide');
+      
+      // Generate dot indicators
+      slides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `w-2.5 h-2.5 rounded-full transition-all ${idx === 0 ? 'bg-brand-orange w-6' : 'bg-brand-border hover:bg-neutral-400'}`;
+        dot.setAttribute('aria-label', `Voir diapositive ${idx + 1}`);
+        dot.addEventListener('click', () => {
+          const slideWidth = slides[0].getBoundingClientRect().width + 20; // 20px gap
+          carouselTrack.scrollTo({ left: idx * slideWidth, behavior: 'smooth' });
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      const updateDots = () => {
+        const slideWidth = slides[0].getBoundingClientRect().width + 20;
+        const activeIndex = Math.round(carouselTrack.scrollLeft / slideWidth);
+        const dots = dotsContainer.querySelectorAll('button');
+        dots.forEach((dot, idx) => {
+          if (idx === activeIndex) {
+            dot.className = 'w-6 h-2.5 rounded-full bg-brand-orange transition-all';
+          } else {
+            dot.className = 'w-2.5 h-2.5 rounded-full bg-brand-border hover:bg-neutral-400 transition-all';
+          }
+        });
+      };
+
+      carouselTrack.addEventListener('scroll', updateDots, { passive: true });
+
+      prevBtn.addEventListener('click', () => {
+        const slideWidth = slides[0].getBoundingClientRect().width + 20;
+        carouselTrack.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const slideWidth = slides[0].getBoundingClientRect().width + 20;
+        carouselTrack.scrollBy({ left: slideWidth, behavior: 'smooth' });
+      });
+
+      // Autoplay with pause on hover
+      let autoplayTimer = setInterval(() => {
+        const slideWidth = slides[0].getBoundingClientRect().width + 20;
+        const maxScroll = carouselTrack.scrollWidth - carouselTrack.clientWidth;
+        if (carouselTrack.scrollLeft >= maxScroll - 10) {
+          carouselTrack.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          carouselTrack.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        }
+      }, 5000);
+
+      carouselTrack.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+      carouselTrack.addEventListener('mouseleave', () => {
+        clearInterval(autoplayTimer);
+        autoplayTimer = setInterval(() => {
+          const slideWidth = slides[0].getBoundingClientRect().width + 20;
+          const maxScroll = carouselTrack.scrollWidth - carouselTrack.clientWidth;
+          if (carouselTrack.scrollLeft >= maxScroll - 10) {
+            carouselTrack.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            carouselTrack.scrollBy({ left: slideWidth, behavior: 'smooth' });
+          }
+        }, 5000);
+      });
+    }
 
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
